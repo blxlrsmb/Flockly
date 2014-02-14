@@ -1,0 +1,30 @@
+doctype 5
+html
+  head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title Flockly
+    link rel='stylesheet' href='css/app.css'
+  body
+    .row
+      .small-12.columns
+        h1 Flockly
+
+    form.row
+      .small-6.small-centered.columns
+        .row.collapse
+          .small-10.columns
+            input.search-input type='text' placeholder='Search projects' autofocus=true
+          .small-2.columns
+            button.button.postfix Search
+    .row
+      .small-12.columns
+        ul.large-block-grid-4.medium-block-grid-3.small-block-grid-2
+          - 9.times
+            li
+              .callout.panel
+                a href='#' Meow
+                .block-detail
+                  span Last modified on
+                  span.block-date Feb 15 2014 12:13
+                .block-tags
