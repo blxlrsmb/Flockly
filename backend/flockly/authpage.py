@@ -1,5 +1,6 @@
 from flockly import app
 from flockly import config
+from flockly.user import User
 from facebook import FacebookAPI, FacebookClientError, GraphAPI
 from flask import redirect, request, session
 import time
@@ -28,7 +29,8 @@ def auth_redirect():
         return 'Authorization Failed:' + str(e)
 
 def save_user(userid, access_token, access_token_expires):
-    pass
+    User(userid=userid, access_token=access_token,
+         access_token_expires=access_token_expires).save()
 
 def get_user_access_token(userid):
-    pass
+    return User.get_access_token()
