@@ -33,4 +33,4 @@ def save_user(userid, access_token, access_token_expires):
          access_token_expires=access_token_expires).save()
 
 def get_user_access_token(userid):
-    return User.get_access_token()
+    return User.objects(userid=userid)[0].get_access_token()
