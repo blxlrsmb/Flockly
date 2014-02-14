@@ -15,7 +15,6 @@ class User(Document):
     access_token = StringField(required=True)
     access_token_expires = IntField()
     def get_access_token(self):
-        print time.time(), self.access_token_expires, self.access_token
         if time.time() > self.access_token_expires:
             return None
         else:
