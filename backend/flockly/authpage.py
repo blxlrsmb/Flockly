@@ -2,6 +2,7 @@ from flockly import app
 from flockly import config
 from facebook import FacebookAPI, FacebookClientError, GraphAPI
 from flask import redirect, request, session
+import time
 
 
 
@@ -20,8 +21,9 @@ def auth_redirect():
         access_token = f.get_access_token(request.args.get('code', ''))
         graph = GraphAPI(access_token['access_token'])
         id = graph.get('me')['id']
-        save_user(id, access_token['access_token'], int(access_token['expires'] + time.time() - 3600))
+        save_user(id, access_token['access_token'], int(int(access_token['expires']) + time.time() - 3600))
         session['uid'] = id
+        return redirect('/')
     except FacebookClientError as e:
         return 'Authorization Failed:' + str(e)
 
