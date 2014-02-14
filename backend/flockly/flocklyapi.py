@@ -1,4 +1,4 @@
-from flask import session, Response
+from flask import session, Response, request
 from flockly import app, basefunc
 from facebook import GraphAPI
 import flockly.authpage
@@ -24,23 +24,26 @@ def get_friends():
 
 @app.route('/upload_blockly', methods=['POST'])
 @basefunc.auth_required
-@basefunc.tojson
 def upload_blockly():
-    id = request.args.get('id', '')
+    id = None
+    if 'id' in request.form:
+        id = request.form['id']
     a_blockly = None
     if id:
-        a_blockly = list(flockly.blockly.Blockly.objects(id=request.args.get('id', ''), userid=session['uid']))
+        a_blockly = list(flockly.blockly.Blockly.objects(id=id, userid=session['uid']))
         if a_blockly:
             a_blockly = a_blockly[0]
         else:
             return Response('', status=404)
     else:
         a_blockly = flockly.blockly.Blockly()
+        a_blockly['userid'] = session['uid']
 
     a_blockly['content'] = request.form['content']
     a_blockly['name'] = request.form['name']
 
     a_blockly.save()
+    return str(a_blockly.id)
 
 
 
@@ -50,7 +53,7 @@ def upload_blockly():
 def get_blockly_list():
     blocklies = []
     for i in flockly.blockly.Blockly.objects(userid=session['uid']):
-        blocklies.append({'id': i.id, 'name': i.name})
+        blocklies.append({'id': str(i.id), 'name': i.name})
     return blocklies
 
 
@@ -62,7 +65,7 @@ def get_blockly():
     if a_blockly:
         a_blockly = a_blockly[0]
         return {
-                'id': a_blockly.id,
+                'id': str(a_blockly.id),
                 'userid': a_blockly.userid,
                 'content': a_blockly.content,
                 'name': a_blockly.name
