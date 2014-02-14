@@ -24,51 +24,42 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.variables');
+goog.provide('Blockly.Blocks.facebook');
 
 goog.require('Blockly.Blocks');
 
-
-Blockly.Blocks['get_friend_list'] = {
-	category: 'facebook',
-  // Variable getter.
+Blockly.Blocks['fb_getFriends'] = {
   init: function() {
-    this.setHelpUrl(Blockly.Msg.VARIABLES_GET_HELPURL);
     this.setColour(330);
     this.appendDummyInput()
-        .appendField("Get my friend list");
+        .appendField("My Facebook friend list");
     this.setOutput(true, 'Array');
-    this.setTooltip(Blockly.Msg.VARIABLES_GET_TOOLTIP);
-    this.contextMenuMsg_ = Blockly.Msg.VARIABLES_GET_CREATE_SET;
-    this.contextMenuType_ = 'get_friend_list';
   }
 };
 
-Blockly.Blocks['test_set'] = {
-  // Variable setter.
-  init: function() {
-    this.setHelpUrl(Blockly.Msg.VARIABLES_SET_HELPURL);
-    this.setColour(330);
-    this.interpolateMsg(
-        // TODO: Combine these messages instead of using concatenation.
-        Blockly.Msg.VARIABLES_SET_TITLE + ' %1 ' +
-        Blockly.Msg.VARIABLES_SET_TAIL + ' %2',
-        ['VAR', new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM)],
-        ['VALUE', null, Blockly.ALIGN_RIGHT],
-        Blockly.ALIGN_RIGHT);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
-    this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
-    this.contextMenuType_ = 'variables_get';
-  },
-  getVars: function() {
-    return [this.getFieldValue('VAR')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-      this.setFieldValue(newName, 'VAR');
+Blockly.Blocks['fb_updateStatus'] = {
+    init: function() {
+        this.setColour(123);
+				this.appendValueInput('TEXT')
+						.appendField('Update my status to');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
     }
-  },
-  customContextMenu: Blockly.Blocks['variables_get'].customContextMenu
+};
+
+
+Blockly.Blocks['fb_userInfo'] = {
+    init: function() {
+        this.setColour(123);
+        var dropdown = new Blockly.FieldDropdown([
+                ['The name of the user', 'NAME'],
+                ['The sex of the user', 'SEX'],
+                ['The age of the user', 'AGE'],
+                ['The id of the user', 'ID'],
+                ['The city of the user', 'CITY']]);
+				this.appendValueInput('USER')
+						.appendField(dropdown, 'END');
+        this.setOutput(true, 'TEXT');
+        this.setInputsInline(true);
+    }
 };
