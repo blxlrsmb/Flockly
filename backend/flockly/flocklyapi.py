@@ -63,7 +63,7 @@ def get_blockly():
         a_blockly = a_blockly[0]
         return {
                 'id': a_blockly.id,
-                'uid': a_blockly.userid,
+                'userid': a_blockly.userid,
                 'content': a_blockly.content,
                 'name': a_blockly.name
                 }
