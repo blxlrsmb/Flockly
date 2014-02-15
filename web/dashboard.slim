@@ -40,11 +40,12 @@ html
     script#block-item-tpt type='text/x-handlebars-template'
       li
         .callout.panel
-          a.block-name href='block?id={{id}}' = '{{name}}'
-          .block-detail
-            span Last modified on
-            span.block-date = '{{mtime}}'
-          .block-tags
+          a href='block?id={{id}}'
+            .block-name = '{{name}}'
+            .block-detail
+              span Last modified on
+              span.block-date = '{{mtime}}'
+            .block-tags
 
     script src='js/handlebars/handlebars.min.js'
     script src='js/lodash/lodash.min.js'
