@@ -1,4 +1,4 @@
-from flockly import app
+from flockly import app, basefunc
 from flockly import config
 from flockly.user import User
 from facebook import FacebookAPI, FacebookClientError, GraphAPI
@@ -32,6 +32,7 @@ def auth_redirect():
 
 
 @app.route('/logout')
+@basefunc.auth_required
 def logout():
     del session['uid']
     return redirect('/')
