@@ -19,6 +19,9 @@ class FBUser:
     # city = None # location.name
     # sex = None # gender
     # birthday = None # birthday mm/dd/yyyy
+    def __init__(self, id, name):
+        self.id = id
+        self.name = id
     def __str__(self):
         return self.name.encode('utf-8')
     def __unicode__(self):
@@ -50,7 +53,6 @@ class FBStatus:
     def __repr__(self):
         return str(self)
 
-FBUsers = {}
 
 
 UID = sys.argv[1]
