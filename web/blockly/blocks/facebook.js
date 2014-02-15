@@ -103,7 +103,31 @@ Blockly.Blocks['fb_getStatusOf'] = {
   init: function() {
     this.setColour(330);
     this.appendValueInput('USER')
-        .appendField("List of new status from my friend");
+        .appendField("List of new status from");
     this.setOutput(true, 'Array');
   }
+};
+
+/*
+ *getFriendField =  function() {
+ *  var friends = ['friend one', 'friend two'];
+ *  var tmplist = [];
+ *  friends.forEach(function(name) {
+ *    tmplist.push([name, name]);
+ *  });
+ *  return new Blockly.FieldDropdown(tmplist);
+ *};
+ *
+ *
+ */
+Blockly.Blocks['fb_user'] = {
+	init: function() {
+		this.setColour(330);
+		var testdropdown = new Blockly.FieldDropdown([
+			['haha', 'haha'],
+			['hehe', 'hehe']]);
+			this.appendValueInput('TEXT')
+					.appendField(window.getFriendField(), "friend");
+			this.setOutput(true, 'USER');
+	}
 };
