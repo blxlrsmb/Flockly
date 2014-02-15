@@ -1,5 +1,5 @@
 //File: extra.js
-//Date: Sat Feb 15 22:42:14 2014 +0800
+//Date: Sun Feb 16 01:28:34 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 
@@ -19,6 +19,27 @@ Blockly.Blocks['text_include'] = {
     this.setInputsInline(true);
   }
 };
+
+Blockly.Blocks['weather'] = {
+	init: function() {
+		this.setColour(190);
+		this.appendDummyInput().appendField("the weather of city");
+		this.appendDummyInput().appendField(new Blockly.FieldTextInput('Singapore'), 'CITY');
+		this.setInputsInline(true);
+		this.setOutput(true, 'Number');
+	}
+};
+
+Blockly.Blocks['lists_contain'] = {
+	init: function() {
+		this.setColour(190);
+		this.appendValueInput('VALUE').appendField("value");
+		this.appendValueInput('LST').appendField("is contained in list");
+		this.setInputsInline(true);
+		this.setOutput(true, 'Number');
+	}
+};
+
 Blockly.Blocks['lists_getIndex_new'] = {
   // Get element at index.
   init: function() {

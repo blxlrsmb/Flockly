@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
-# File: w.py
-# Date: Sun Feb 16 01:06:06 2014 +0800
+# File: weather.py
+# Date: Sun Feb 16 01:22:22 2014 +0800
 # Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 import json

@@ -23,6 +23,22 @@ def lists_length(soup):
 def lists_isEmpty(soup):
     return lists_length(soup) + ' == 0'
 
+def lists_indexOf(soup):
+    se = findName(soup, 'END').text
+    lst = valueToCode(soup, 'VALUE')
+    val = valueToCode(soup, 'FIND')
+    if se == 'FIRST':
+        return '(({0}).index({1}) + 1)'.format(lst, val)
+    elif se == 'LAST':
+        return '((reversed({0})).index({1}) + 1)'.format(lst, val)
+    else:
+        raise "Illegal program"
+
+def lists_contain(soup):
+    val = valueToCode(soup, 'VALUE')
+    lst = valueToCode(soup, 'LST')
+    return '({0} in {1})'.format(val, lst)
+
 def lists_getIndex_new(soup):
     print soup
     mode = findName(soup, 'MODE').text
