@@ -10,6 +10,8 @@ class Blockly(Document):
     userid = StringField(required=True)
     content = StringField(default="")
     name = StringField()
+    lastexecution = IntField(default=0)
+    timesexecuted = IntField(default=0)
 
 # vim: foldmethod=marker
 

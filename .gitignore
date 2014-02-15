@@ -1,2 +1,2 @@
 *.py[co]
-config.py
+/backend/flockly/config.py
