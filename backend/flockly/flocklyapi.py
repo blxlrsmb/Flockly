@@ -99,6 +99,7 @@ def reset_block():
         for i in flockly.blockly.Blockly.objects(id=request.args.get('id', ''), userid=session['uid']):
             i.timesexecuted = 0
             i.lastexecution = 0
+            i.logs = []
             i.save()
         return 'ok'
     except:
