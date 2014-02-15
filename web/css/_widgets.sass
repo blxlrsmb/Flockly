@@ -1,0 +1,62 @@
+.flockly-switch
+  border-radius: 30px
+  display: inline-block
+  cursor: pointer
+  line-height: 1.2
+  overflow: hidden
+  text-align: left
+  width: 80px
+  position: relative
+  mask: url('img/mask.png') 0 0 no-repeat
+  user-select: none
+  font-weight: bold
+
+  .switch-off, .switch-on
+    width: 130px
+    position: relative
+    transition: left 0.25s ease-out
+
+  .switch-off
+    left: -50px
+    label
+      background-color: #7F8C9A
+  .switch-left
+    background-color: #34495E
+    color: #1ABC9C
+    text-indent: 7px
+
+  .switch-on
+    left: 0
+    border-radius: 30px 0 0 30px
+    label
+      background-color: #1ABC9C
+  .switch-right
+    border-radius: 0 30px 30px 0
+    background-color: #BDC3C7
+    color: #FFF
+
+  input[type=checkbox]
+    display: none
+
+  span, label
+    float: left
+    box-sizing: border-box
+
+  label
+    margin: 0 -15px
+    width: 29px
+    height: 29px
+    z-index: 1
+    position: relative
+    border-radius: 50%
+
+  span
+    padding-bottom: 6px
+    padding-top: 5px
+    line-height: 19px
+    cursor: pointer
+    margin: 0
+    height: 29px
+    position: relative
+    text-align: center
+    width: 50%
