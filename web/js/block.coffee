@@ -34,6 +34,14 @@ $('#export-xml').on 'click', (ev) ->
 $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
 
+$('#clone-block').on 'click', (ev) ->
+  ev.preventDefault()
+  $.getJSON "/get_blockly?id=#{id}", (data) ->
+    delete data.id
+    $.post '/upload_blockly', data, (id_) ->
+      id = id_
+      history.replaceState null, null, "?id=#{id}"
+
 $('#delete-block').on 'click', (ev) ->
   ev.preventDefault()
   $.ajax
