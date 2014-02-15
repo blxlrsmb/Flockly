@@ -23,7 +23,7 @@ def logic_compare(soup):
             'GTE': ' >= '
             }
     ret = valueToCode(soup, 'A')
-    ret += ops[findName(soup, 'B')['label']]
+    ret += ops[findName(soup, 'OP').text]
     ret += valueToCode(soup, 'B')
     return ret
 
@@ -33,7 +33,7 @@ def logic_operation(soup):
             'OR': ' or '
             }
     ret = valueToCode(soup, 'A')
-    ret += ops[findName(soup, 'B')['label']]
+    ret += ops[findName(soup, 'OP').text]
     ret += valueToCode(soup, 'B')
     return ret
 

@@ -1,5 +1,5 @@
 //File: facebook.js
-//Date: Sat Feb 15 16:24:42 2014 +0800
+//Date: Sat Feb 15 16:48:57 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 'use strict';
@@ -44,7 +44,7 @@ Blockly.Blocks['fb_userInfo'] = {
         var dropdown = new Blockly.FieldDropdown([
                 ['The name of the user', 'name'],
                 ['The sex of the user', 'sex'],
-                ['The age of the user', 'age'],
+                ['The birthday of the user', 'birthday'],
                 ['The id of the user', 'id'],
                 ['The city of the user', 'city']]);
 				this.appendValueInput('USER')
