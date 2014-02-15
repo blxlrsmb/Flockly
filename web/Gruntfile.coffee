@@ -4,6 +4,14 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
+    copy:
+      dev:
+        files: [ {
+          expand: true
+          src: ['blockly/block*_compressed.js', 'blockly/msg/js/en.js', 'blockly/blocks/*']
+          dest: 'build'
+        } ]
+
     coffee:
       dev:
         files: [
@@ -67,15 +75,16 @@ module.exports = (grunt) ->
     bower:
       dev:
         options:
-          targetDir: 'vendor/assets'
+          targetDir: 'build'
           layout: 'byType'
 
   grunt.loadNpmTasks 'grunt-bower-task'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-slim'
 
-  grunt.registerTask 'dev', ['coffee:dev', 'sass:dev', 'slim:dev']
+  grunt.registerTask 'dev', ['copy:dev', 'coffee:dev', 'sass:dev', 'slim:dev']
   grunt.registerTask 'default', ['dev', 'connect', 'watch']

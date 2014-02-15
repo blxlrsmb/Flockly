@@ -10,11 +10,16 @@ html
       .small-12.columns
         h1 Flockly
 
+    .row
+      .small-12.columns
+        ul.breadcrumbs
+          li.current: a href='/' Home
+
     form.row
       .small-6.small-centered.columns
         .row.collapse
           .small-10.columns
-            input.search-input type='text' placeholder='Search projects' autofocus=true
+            input#search-input type='text' placeholder='Search projects' autofocus=true
           .small-2.columns
             button.button.postfix Search
     .row
@@ -23,8 +28,11 @@ html
           - 9.times
             li
               .callout.panel
-                a href='#' Meow
+                a href='block.html' Meow
                 .block-detail
                   span Last modified on
                   span.block-date Feb 15 2014 12:13
                 .block-tags
+
+    script src='js/jquery/jquery.min.js'
+    script src='js/app.js'
