@@ -10,6 +10,7 @@ from generators.common import *
 
 
 def math_arithmetic(soup):
+    print findName(soup, 'OP')
     ops = {
           'ADD': ' + ',
           'MINUS': ' - ',
@@ -18,7 +19,7 @@ def math_arithmetic(soup):
           'POWER': ' ** '
           }
     ret = "int({})".format(valueToCode(soup, 'A'))
-    ret += ops[findName(soup, 'B')['label']]
+    ret += ops[findName(soup, 'OP').text]
     ret += "int({})".format(valueToCode(soup, 'B'))
     return ret
 
