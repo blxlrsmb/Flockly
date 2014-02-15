@@ -53,3 +53,12 @@ def controls_whileUntil(soup):
         do += "\nif {0}:\n".format(cond) + indentCode('break')
         return "while True:\n" + \
                 indentCode(do)
+
+def controls_flow_statements(soup):
+    flow = findName(soup, 'FLOW').text
+    if flow == 'BREAK':
+        return 'break'
+    elif flow == 'CONTINUE':
+        return 'continue'
+    else:
+        raise 'Illegal Program'

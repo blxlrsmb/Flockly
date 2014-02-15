@@ -34,7 +34,7 @@ def translate(s):
     ret = ''
     soup = UglySoup(s, convertEntities=UglySoup.HTML_ENTITIES,
                     fromEncoding='UTF-8')
-    var_titles = soup.findAll('title', attrs={'name': 'VAR'})
+    var_titles = soup.findAll('field', attrs={'name': 'VAR'})
     variables = set([i.text for i in var_titles])  # remove duplicated
     for i in soup.findAll('variable', attrs={'name': 'VAR'}):
         i.setString(i['data'])
