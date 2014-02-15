@@ -11,7 +11,7 @@ import json
 import requests
 import bson
 
-print "[SYSTEM] Initializing FBAPI"
+print >>sys.stderr, "[SYSTEM] Initializing FBAPI"
 
 def to_unicode(s):
     if isinstance(s, str):
@@ -113,7 +113,7 @@ def getAllStatus():
         else:
             status.location = ''
         statuses.append(status)
-    print "[SYSTEM] Got a list of %d statuses" % (len(statuses))
+    print >>sys.stderr, "[SYSTEM] Got a list of %d statuses" % (len(statuses))
     return statuses
 
 def getUserinfo(uid):
@@ -164,7 +164,7 @@ def getMyFriends():
             friends.append(fri)
         if 'paging' in res and 'next' in res['paging']:
             res = json.loads(requests.get(res['paging']['next']).text)
-    print "[SYSTEM] Got a list of %d friends" % (len(friends))
+    print >>sys.stderr, "[SYSTEM] Got a list of %d friends" % (len(friends))
     return friends
 
 
@@ -191,7 +191,7 @@ def getStatusOf(u):
         else:
             status.location = ''
         statuses.append(status)
-    print "[SYSTEM] Get %d status of %s" % (len(statuses), str(u))
+    print >>sys.stderr, "[SYSTEM] Get %d status of %s" % (len(statuses), str(u))
     return statuses
 
 
@@ -200,4 +200,4 @@ totTimesExecuted = B.timesexecuted
 currentTime = datetime.datetime.utcnow
 myself = lambda: getUserinfo(U.userid)
 
-print "[SYSTEM] FBAPI Initialized"
+print >>sys.stderr, "[SYSTEM] FBAPI Initialized"

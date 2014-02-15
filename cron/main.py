@@ -34,7 +34,7 @@ while True:
                 os.system("echo [SYSTEM] Generated code: >> /tmp/flockly.run.log")
                 os.system("cat ./flockly.py >> /tmp/flockly.run.log")
                 os.system("echo [SYSTEM] Running >> /tmp/flockly.run.log")
-                os.system(PYTHON_CMD + " ./flockly.py " + blo.userid + " " + str(blo.id)  + " 1>>/tmp/flockly.run.log 2>&1")
+                os.system(PYTHON_CMD + " -u ./flockly.py " + blo.userid + " " + str(blo.id)  + " 1>>/tmp/flockly.run.log 2>&1")
                 os.unlink('./flockly.py')
                 blo.lastexecution = int(time.time())
                 blo.timesexecuted = blo.timesexecuted + 1
