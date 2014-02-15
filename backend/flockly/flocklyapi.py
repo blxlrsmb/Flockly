@@ -46,6 +46,11 @@ def upload_blockly():
     return str(a_blockly.id)
 
 
+@app.route('/logout')
+def logout():
+    del session['uid']
+
+
 
 @app.route('/get_blockly_list')
 @basefunc.auth_required
