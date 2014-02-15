@@ -11,6 +11,13 @@ saveData = do ->
     a.click()
     URL.revokeObjectURL a.href
 
+renameTag = (node, name) ->
+  unless node.jquery
+    node = $(node)
+  node2 = $('<'+name+'/>').html node.html()
+  node.replaceWith node2
+  node2
+
 ## Main
 
 if Blockly?
@@ -19,8 +26,17 @@ if Blockly?
     toolbox: $('#toolbox')[0]
 
 $('#search-input').on 'input', ->
-  console.log 3
+  needle = new RegExp($(@).val(), 'i')
+  $('#blocks ol').each (_, el) ->
+    el.style.display = ''
+    renameTag el, 'li'
+  $('#blocks li').each (_, el) ->
+    unless $('.block-name', el).text().match needle
+      x = renameTag(el, 'ol')
+      x[0].style.display = 'none'
 
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
-  saveData 'hello', 'meow.xml'
+  xml = Blockly.Xml.domToText Blockly.Xml.workspaceToDom Blockly.mainWorkspace
+  $('#blockly')
+  saveData xml, 'meow.xml'

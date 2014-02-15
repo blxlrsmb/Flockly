@@ -5,8 +5,23 @@
   <title>Blockly Demo: Toolbox</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../blocks_compressed.js"></script>
-  <script type="text/javascript" src="../../blocks/facebook.js"></script>
   <script type="text/javascript" src="../../msg/js/en.js"></script>
+	<script type="text/javascript">
+		duplicateList = function(arr) {
+			var ret = []
+			arr.forEach(function(ele) {
+				ret.push([ele, ele]);
+			});
+			return ret;
+		};
+		getFriendField =  function() {
+			var friends = ['Fangrui', 'Qijiang', 'Yuxin'];
+			var tmplist = duplicateList(friends);
+			return new Blockly.FieldDropdown(tmplist);
+		};
+	</script>
+  <script type="text/javascript" src="../../blocks/facebook.js"></script>
+  <script type="text/javascript" src="../../blocks/datetime.js"></script>
   <style>
     body {
       background-color: #fff;
@@ -139,11 +154,16 @@
     </category>
     <category name="Variables" custom="VARIABLE"></category>
     <category name="Functions" custom="PROCEDURE"></category>
+		<category name="Datetime" >
+			<block type="time_field"></block>
+		</category>
 		<category name="Text">
 			<block type="text"></block>
 			<block type="text_join"></block>
 			<block type="text_create_join_container"></block>
-			<block type="text_create_join_item"></block>
+			<!--
+				 -<block type="text_create_join_item"></block>
+				 -->
 			<block type="text_append"></block>
 			<block type="text_length"></block>
 			<block type="text_isEmpty"></block>
@@ -163,6 +183,7 @@
 			<block type="fb_statusInfo"></block>
 			<block type="fb_getAllStatus"></block>
 			<block type="fb_getStatusOf"></block>
+			<block type="fb_user"></block>
 		</category>
     <category name="Library">
       <category name="Randomize">

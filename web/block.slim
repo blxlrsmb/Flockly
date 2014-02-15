@@ -11,18 +11,20 @@ html
         h1 Flockly
 
     .row
-      .small-12.columns
+      .small-10.columns
         ul.breadcrumbs
           li: a href='/' Home
           li.current: a href='#' Block
+      .small-2.columns
+        a.button.dropdown.small href='#' data-dropdown='drop-actions' Actions
+        ul#drop-actions.f-dropdown data-dropdown-content=true
+          li: a#export-xml.button.small href='#' Export XML
+          li: a#clone-block.button.small href='#' Clone
+          li: a#delete-block.button.small href='#' Delete
 
     .row
       .small-12.columns
         output#blockly style='display: block; height: 500px;'
-
-    .row.actions
-      .small-12.columns.text-center
-        a#export-xml.button.small href='#' Export XML
 
     xml#toolbox[style="display: none"]
       category[name="Control"]
@@ -112,10 +114,31 @@ html
         block[type="lists_setIndex"]
       category[name="Variables" custom="VARIABLE"]
       category[name="Functions" custom="PROCEDURE"]
-      category[name="facebook"]
-        block[type="fb_getFriends"]
-        block[type="fb_updateStatus"]
-        block[type="fb_userInfo"]
+      category name="Datetime"
+        block type="time_field"
+      category name="Text"
+        block type="text"
+        block type="text_join"
+        block type="text_create_join_container"
+        block type="text_append"
+        block type="text_length"
+        block type="text_isEmpty"
+        block type="text_indexOf"
+        block type="text_charAt"
+        block type="text_getSubstring"
+        block type="text_changeCase"
+        block type="text_trim"
+        block type="text_print"
+        block type="text_prompt"
+      category name="Facebook"
+        block type="fb_getFriends"
+        block type="fb_updateStatus"
+        block type="fb_userInfo"
+        block type="fb_commentStatus"
+        block type="fb_statusInfo"
+        block type="fb_getAllStatus"
+        block type="fb_getStatusOf"
+        block type="fb_user"
 
     script src='js/jquery/jquery.min.js'
     script src='js/blockly/blockly_compressed.js'

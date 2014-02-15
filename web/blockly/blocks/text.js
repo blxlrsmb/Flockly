@@ -45,6 +45,7 @@ Blockly.Blocks['text'] = {
   }
 };
 
+
 Blockly.Blocks['text_join'] = {
   // Create a string made up of any number of elements of any type.
   init: function() {

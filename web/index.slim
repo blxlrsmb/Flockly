@@ -11,9 +11,11 @@ html
         h1 Flockly
 
     .row
-      .small-12.columns
+      .small-10.columns
         ul.breadcrumbs
           li.current: a href='/' Home
+      .small-2.columns
+        a#new-block.button.small href='#' New Block
 
     form.row
       .small-6.small-centered.columns
@@ -24,11 +26,11 @@ html
             button.button.postfix Search
     .row
       .small-12.columns
-        ul.large-block-grid-4.medium-block-grid-3.small-block-grid-2
-          - 9.times
+        ul#blocks.large-block-grid-4.medium-block-grid-3.small-block-grid-2
+          - 9.times do |i|
             li
               .callout.panel
-                a href='block.html' Meow
+                a.block-name href='block.html' = "Meow#{i}"
                 .block-detail
                   span Last modified on
                   span.block-date Feb 15 2014 12:13
