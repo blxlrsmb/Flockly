@@ -27,6 +27,7 @@ html
     .row
       .small-12.columns
         ul#blocks.large-block-grid-4.medium-block-grid-3.small-block-grid-2
+         /
           - 9.times do |i|
             li
               .callout.panel
@@ -36,6 +37,16 @@ html
                   span.block-date Feb 15 2014 12:13
                 .block-tags
 
+    script#block-item-tpt type='text/x-handlebars-template'
+      li
+        .callout.panel
+          a.block-name href='block?id={{id}}' = '{{name}}'
+          .block-detail
+            span Last modified on
+            span.block-date = '{{mtime}}'
+          .block-tags
+
+    script src='js/handlebars/handlebars.min.js'
     script src='js/lodash/lodash.min.js'
     script src='js/jquery/jquery.min.js'
     script src='js/modernizr/modernizr.js'
