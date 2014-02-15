@@ -6,6 +6,7 @@ from blockly import Blockly
 import time
 import os
 import sys
+import traceback
 reload(sys)
 sys.setdefaultencoding(sys.getfilesystemencoding())
 
@@ -43,8 +44,10 @@ while True:
                 blo.save()
             except Exception as e:
                 print >>sys.stderr, e
+                print >>sys.stderr, traceback.format_exc()
             finally:
                 time.sleep(1)
 
     except Exception as e:
         print >>sys.stderr, e
+        print >>sys.stderr, traceback.format_exc()
