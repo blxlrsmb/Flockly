@@ -15,6 +15,7 @@ class Blockly(Document):
     lastmodified = IntField(default=0)
     logs = ListField(default=[])
     enabled = BooleanField(default=False)
+    public = BooleanField(default=False)
 
 # vim: foldmethod=marker
 

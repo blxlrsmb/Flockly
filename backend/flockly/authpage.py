@@ -9,7 +9,7 @@ import time
 
 @app.route('/auth')
 def auth():
-    f = FacebookAPI(config.API_KEY, config.API_SECRET, config.REDIRECT_URL)
+    f = FacebookAPI(config.API_KEY, config.API_SECRET, config.SITE_URL + "/auth_redirect")
     auth_url = f.get_auth_url(scope=[
         "publish_stream", "read_stream", "status_update", "user_friends",
         "friends_birthday", "friends_hometown", "friends_location",
@@ -19,7 +19,7 @@ def auth():
 
 @app.route('/auth_redirect')
 def auth_redirect():
-    f = FacebookAPI(config.API_KEY, config.API_SECRET, config.REDIRECT_URL)
+    f = FacebookAPI(config.API_KEY, config.API_SECRET, config.SITE_URL + "/auth_redirect")
     try:
         access_token = f.get_access_token(request.args.get('code', ''))
         graph = GraphAPI(access_token['access_token'])
