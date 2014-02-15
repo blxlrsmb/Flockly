@@ -24,7 +24,8 @@ $('#search-input').on 'input', ->
       x = renameTag(el, 'ol')
       x[0].style.display = 'none'
 
+blockItemTpt = Handlebars.compile $('#block-item-tpt').html()
+
 $.getJSON '/get_blockly_list', (data) ->
-  _.pluck(data, 'id').forEach (id) ->
-  console.log data
-  data.forEach (
+  data.forEach (item) ->
+    $('#blocks').append $('<li/>').html blockItemTpt item

@@ -2,7 +2,6 @@
 
 exports = {}
 window.Flockly = exports
-host = 'http://sg.fqj.me'
 
 exports.getQueryParams = ->
   cs = location.search.substr(1)
@@ -14,7 +13,7 @@ exports.getQueryParams = ->
 
 exports.getProfile = (success, fail) ->
   $.ajax
-    url: "#{host}/get_profile"
+    url: "/get_profile"
     dataType: 'json'
     cache: false
     success: success
