@@ -8,7 +8,7 @@ module.exports = (grunt) ->
       dev:
         files: [ {
           expand: true
-          src: ['blockly/block*_compressed.js', 'blockly/msg/js/en.js', 'blockly/blocks/*']
+          src: ['blockly/block*_compressed.js', 'blockly/msg/js/en.js', 'blockly/blocks/*', 'assets/*']
           dest: 'build'
         } ]
 
