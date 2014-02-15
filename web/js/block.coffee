@@ -31,8 +31,17 @@ $('#export-xml').on 'click', (ev) ->
     name = "#{name}.xml"
   Flockly.saveData getXML(), name
 
+$file = $('#xml-file')
+$file.on 'change', ->
+  if @.files.length > 0
+    r = new FileReader
+    r.onload = (e) ->
+      dom = Blockly.Xml.textToDom e.target.result
+      Blockly.Xml.domToWorkspace Blockly.mainWorkspace, dom
+    r.readAsText @.files[0]
 $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
+  $file.trigger 'click'
 
 $('#clone-block').on 'click', (ev) ->
   ev.preventDefault()
