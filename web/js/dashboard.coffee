@@ -44,12 +44,13 @@ $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
   $file.trigger 'click'
 
+Handlebars.registerHelper 'fmtTime', (epoch, options) ->
+  moment((+epoch)*1000).format 'YYYY-MM-DD hh:mm'
 blockItemTpt = Handlebars.compile $('#block-item-tpt').html()
 
 $.getJSON '/get_blockly_list', (data) ->
   data.forEach (item) ->
     $('#blocks').append $('<li/>').html blockItemTpt item
-
 
 $(document).on 'click', '.switch-on, .switch-off', ->
   if $(@).hasClass 'switch-on'

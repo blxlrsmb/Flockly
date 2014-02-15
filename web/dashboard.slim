@@ -67,8 +67,8 @@ html
             .block-name = '{{name}}'
           a href='block?id={{id}}'
             .block-detail
-              span Last modified on
-              span.block-date = '{{mtime}}'
+              span> Last modified on
+              span.block-date = '{{fmtTime lastmodified}}'
           .block-tags
     .row.footer
       #developer
@@ -81,6 +81,7 @@ html
       #copyright
         | © 2014 Flockly. All rights reserved.
 
+    script src='js/momentjs/moment.min.js'
     script src='js/handlebars/handlebars.min.js'
     script src='js/lodash/lodash.min.js'
     script src='js/jquery/jquery.min.js'
