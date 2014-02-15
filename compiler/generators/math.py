@@ -10,7 +10,6 @@ from generators.common import *
 
 
 def math_arithmetic(soup):
-    print findName(soup, 'OP')
     ops = {
           'ADD': ' + ',
           'MINUS': ' - ',
