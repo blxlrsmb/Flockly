@@ -7,11 +7,14 @@ html
     link rel='stylesheet' href='css/app.css'
   body
     .row
-      .small-10.columns
+      .small-8.columns
         h1 Flockly
-      .small-2.columns
-        img.profile-picture
-        span.profile-name
+      .small-4.columns.text-right
+        a href='#' data-dropdown='drop-profile'
+          img.profile-picture
+          span.profile-name
+        ul#drop-profile.f-dropdown data-dropdown-content=true
+          li: a href='/logout' Log Out
 
     .row
       .small-6.columns
