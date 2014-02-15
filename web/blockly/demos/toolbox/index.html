@@ -7,16 +7,21 @@
   <script type="text/javascript" src="../../blocks_compressed.js"></script>
   <script type="text/javascript" src="../../msg/js/en.js"></script>
 	<script type="text/javascript">
+		duplicateList = function(arr) {
+			var ret = []
+			arr.forEach(function(ele) {
+				ret.push([ele, ele]);
+			});
+			return ret;
+		};
 		getFriendField =  function() {
 			var friends = ['Fangrui', 'Qijiang', 'Yuxin'];
-			var tmplist = [];
-			friends.forEach(function(name) {
-				tmplist.push([name, name]);
-			});
+			var tmplist = duplicateList(friends);
 			return new Blockly.FieldDropdown(tmplist);
 		};
 	</script>
   <script type="text/javascript" src="../../blocks/facebook.js"></script>
+  <script type="text/javascript" src="../../blocks/datetime.js"></script>
   <style>
     body {
       background-color: #fff;
@@ -149,6 +154,9 @@
     </category>
     <category name="Variables" custom="VARIABLE"></category>
     <category name="Functions" custom="PROCEDURE"></category>
+		<category name="Datetime" >
+			<block type="time_field"></block>
+		</category>
 		<category name="Text">
 			<block type="text"></block>
 			<block type="text_join"></block>
