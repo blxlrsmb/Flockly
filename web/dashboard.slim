@@ -3,20 +3,18 @@ html
   head
     meta charset='utf-8'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
+    meta name='description' content='Flockly'
     title Flockly
+    link rel='shortcut icon' href='/assets/favicon.ico'
     link rel='stylesheet' href='css/app.css'
   body
-    .row
-      .small-8.columns
-        h1 Flockly
+    .row.header
+      .small-8.columns#logo
+        img.profile-picture src='/assets/mask.png'
+        h1.profile-name
       .small-4.columns.text-right
-        a href='#' data-dropdown='drop-profile'
-          img.profile-picture
-          span.profile-name
-        ul#drop-profile.f-dropdown data-dropdown-content=true
-          li: a href='/logout' Log Out
-
-    .row
+        a href='/logout' Log Out
+    .row#main
       .small-9.columns
         ul.breadcrumbs
           li.current: a href='/dashboard' Home
@@ -57,6 +55,16 @@ html
               span Last modified on
               span.block-date = '{{mtime}}'
             .block-tags
+    .row.footer
+      #developer
+        | Developed By
+        a target='_blank' href='https://fqj.me'  fqj1994
+        a target='_blank' href='http://maskray.me'  maskray
+        a target='_blank' href='http://ppwwyyxx.com'  ppwwyyxx
+        |  and
+        a target='_blank' href='https://vuryleo.com'  vuryleo
+      #copyright
+        | © 2014 Flockly. All rights reserved.
 
     script src='js/handlebars/handlebars.min.js'
     script src='js/lodash/lodash.min.js'

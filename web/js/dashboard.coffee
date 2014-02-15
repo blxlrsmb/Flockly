@@ -12,7 +12,7 @@ renameTag = (node, name) ->
 $.ajaxSetup error: -> location.replace '/'
 
 Flockly.getProfile (data, status, xhr) ->
-  $('.profile-picture').attr 'src', data.picture.data.url
+  $('.profile-picture').css 'background-image', "url(#{data.picture.data.url})"
   $('.profile-name').text data.name
 
 $('#search-input').on 'input', ->
