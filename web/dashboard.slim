@@ -49,12 +49,27 @@ html
     script#block-item-tpt type='text/x-handlebars-template'
       li
         .callout.panel
+          .block-enabled.flockly-switch data-id='{{id}}'
+            | {{#if enabled}}
+            .switch-on
+              input type='checkbox'
+              span.switch-left on
+              label &nbsp;
+              span.switch-right off
+            | {{else}}
+            .switch-off
+              input type='checkbox'
+              span.switch-left on
+              label &nbsp;
+              span.switch-right off
+            | {{/if}}
           a href='block?id={{id}}'
             .block-name = '{{name}}'
+          a href='block?id={{id}}'
             .block-detail
               span Last modified on
               span.block-date = '{{mtime}}'
-            .block-tags
+          .block-tags
     .row.footer
       #developer
         | Developed By
