@@ -18,6 +18,10 @@ renameTag = (node, name) ->
   node.replaceWith node2
   node2
 
+## Foundation
+
+$(document).foundation()
+
 ## Main
 
 if Blockly?
@@ -38,5 +42,4 @@ $('#search-input').on 'input', ->
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
   xml = Blockly.Xml.domToText Blockly.Xml.workspaceToDom Blockly.mainWorkspace
-  $('#blockly')
   saveData xml, 'meow.xml'
