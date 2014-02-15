@@ -27,7 +27,7 @@ while True:
                 f.write(blo.content)
                 f.close()
                 f = open('./flockly.py', 'wb')
-                f.write("# coding: utf-8\nfrom fbapi import *\nimport sys\nreload(sys)\nsys.setdefaultencoding('utf-8')\nsys.tracebacklimit=0\n")
+                f.write("# coding: utf-8\nfrom fbapi import *\nimport sys\nreload(sys)\nsys.setdefaultencoding('utf-8')\nsys.tracebacklimit=0\nimport datetime\n")
                 f.close()
                 os.system("echo [SYSTEM] Generating code > /tmp/flockly.run.log")
                 os.system(GENERATOR_PATH + " /tmp/flockly.xml >> ./flockly.py 2>>/tmp/flockly.run.log")

@@ -34,7 +34,6 @@ class FBUser:
         if hasattr(self, name):
             return self.__dict__[name]
         user_complete = getUserinfo(self.id)
-        print >>sys.stderr, 'lalla', name
         self.city = user_complete.city
         self.sex = user_complete.sex
         self.has_birthday = user_complete.has_birthday
@@ -71,11 +70,13 @@ B = Blockly.objects(pk=bson.objectid.ObjectId(BID))[0]
 def updateStatus(message):
     graph = GraphAPI(access_token)
     graph.post('/me/feed', params={'message': message})
+    print >>sys.stderr, "[SYSTEM] update status %s..." % (message[:10])
 
 
 def commentStatus(status, comment):
     graph = GraphAPI(access_token)
     graph.post('/%s/comments' % (status.id), params={'message': comment})
+    print >>sys.stderr, "[SYSTEM] comment status %s... with %s..." % (status.content[:10], comment[:10])
 
 
 def getAllStatus():
