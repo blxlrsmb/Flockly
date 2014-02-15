@@ -63,6 +63,13 @@ $('#delete-block').on 'click', (ev) ->
     success: ->
       location.replace '/dashboard'
 
+$('#reset-block').on 'click', (ev) ->
+  ev.preventDefault()
+  $.ajax
+    type: 'POST'
+    url: '/reset_blockly'
+    data: {id}
+
 $('#save-block').on 'click', (ev) ->
   ev.preventDefault()
   uri = '/upload_blockly'
