@@ -27,5 +27,5 @@ $('#search-input').on 'input', ->
 blockItemTpt = Handlebars.compile $('#block-item-tpt').html()
 
 $.getJSON '/get_blockly_list', (data) ->
-  _.pluck(data, 'id').forEach (id) ->
-    $('#blocks').append $('<li/>').html blockItemTpt id: id, name: 'meow', mtime: 0
+  data.forEach (item) ->
+    $('#blocks').append $('<li/>').html blockItemTpt item
