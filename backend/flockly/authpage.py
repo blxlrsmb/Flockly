@@ -30,6 +30,13 @@ def auth_redirect():
     except FacebookClientError as e:
         return 'Authorization Failed:' + str(e)
 
+
+@app.route('/logout')
+def logout():
+    del session['uid']
+    return redirect('/')
+
+
 def save_user(userid, access_token, access_token_expires):
     User(userid=userid, access_token=access_token,
          access_token_expires=access_token_expires).save()
