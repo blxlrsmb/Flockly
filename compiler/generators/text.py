@@ -9,7 +9,8 @@ if hasattr(sys, 'setdefaultencoding'):
 from generators.common import *
 
 def text_print(soup):
-    return funcToCode(soup, 'printOutput', 'TEXT')
+    to_print = valueToCode(soup, 'TEXT')
+    return 'print {0}'.format(to_print)
 
 def text(soup):
     return repr(findName(soup, 'TEXT').text)

@@ -72,3 +72,13 @@ def get_blockly():
                 }
     else:
         return Response('', status=404)
+
+
+@app.route('/get_profile')
+@basefunc.auth_required
+@basefunc.tojson
+def get_profile():
+    token = flockly.authpage.get_user_access_token(session['uid'])
+    graph = GraphAPI(token)
+    profile = graph.get('/me?fields=id,name,picture&access_token=%s&' % (token))
+    return profile
