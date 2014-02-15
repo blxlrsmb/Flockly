@@ -1,10 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 # File: time.py
-# Date: Sat Feb 15 18:41:37 2014 +0800
+# Date: Sat Feb 15 20:24:01 2014 +0800
 # Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 from datetime import datetime
+from generators.common import valueToCode
 
 def time_field(soup):
     field = findName(soup, 'FIELD').text
