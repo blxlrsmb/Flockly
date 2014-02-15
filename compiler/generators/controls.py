@@ -35,14 +35,21 @@ def controls_forEach(soup):
             valueToCode(soup, 'LIST') + ' :\n' + \
             indentCode(blockToCode(findName(soup, 'DO').block))
 
-
-def controls_sleep(soup):
-    return funcToCode(soup, 'time.sleep', ('SECS', int))
-
-
-def controls_repeat(soup):
+def controls_repeat_ext(soup):
     times = findName(soup, 'TIMES').text
 #use block's x position to name a temp var
     return 'for ' + getUniqueVarName() + ' in xrange(' + \
         times + '):\n' + \
         indentCode(blockToCode(findName(soup, 'DO').block))
+
+def controls_whileUntil(soup):
+    mode = findName(soup, 'MODE').text  # 'WHILE', 'UNTIL'
+    cond = valueToCode(soup, 'BOOL')
+    do = blockToCode(findName(soup, 'DO').block)
+    if mode == 'WHILE':
+        return "while {0}:\n".format(cond) + \
+                indentCode(do)
+    elif mode == 'UNTIL':
+        do += "\nif {0}:\n".format(cond) + indentCode('break')
+        return "while True:\n" + \
+                indentCode(do)
