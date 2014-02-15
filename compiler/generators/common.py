@@ -5,7 +5,7 @@
 import sys
 import uuid
 
-from generators import blockToCode
+from generators import blockToCode, getUniqueVarName
 
 if hasattr(sys, 'setdefaultencoding'):
     sys.setdefaultencoding('UTF-8')
