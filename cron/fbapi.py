@@ -153,3 +153,9 @@ def getStatusOf(u):
             status.location = ''
         statuses.append(status)
     return statuses
+
+
+lastTimeExecuted = B.lastexecution
+totTimesExecuted = B.timesexecuted
+currentTime = datetime.datetime.utcnow
+myself = getUserinfo(U.userid)
