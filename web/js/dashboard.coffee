@@ -37,7 +37,8 @@ $file.on 'change', ->
           location.reload()
       $file[0].files.length = 0
     r.readAsText @.files[0]
-$('#import-xml').on 'click', ->
+$('#import-xml').on 'click', (ev) ->
+  ev.preventDefault()
   $file.trigger 'click'
 
 blockItemTpt = Handlebars.compile $('#block-item-tpt').html()
