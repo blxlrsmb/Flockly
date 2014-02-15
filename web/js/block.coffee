@@ -42,6 +42,7 @@ $file.on 'change', ->
       dom = Blockly.Xml.textToDom e.target.result
       Blockly.Xml.domToWorkspace Blockly.mainWorkspace, dom
     r.readAsText @.files[0]
+    @.value = null
 $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
   $file.trigger 'click'

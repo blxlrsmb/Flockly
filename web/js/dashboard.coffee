@@ -38,8 +38,8 @@ $file.on 'change', ->
         name: 'New Block'
         success: ->
           location.reload()
-      $file[0].files.length = 0
     r.readAsText @.files[0]
+    @.value = null
 $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
   $file.trigger 'click'
