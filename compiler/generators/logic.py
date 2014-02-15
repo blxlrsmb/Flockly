@@ -6,8 +6,7 @@ import sys
 if hasattr(sys, 'setdefaultencoding'):
     sys.setdefaultencoding('UTF-8')
 
-from upload_handler.generators.common import *
-from upload_handler.generator import blockToCode, getUniqueVarName
+from generators.common import *
 
 
 def logic_boolean(soup):
@@ -30,7 +29,7 @@ def logic_compare(soup):
 
 def logic_operation(soup):
     ops = {
-            'AND': ' and ', 
+            'AND': ' and ',
             'OR': ' or '
             }
     ret = valueToCode(soup, 'A')

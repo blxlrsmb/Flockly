@@ -4,7 +4,8 @@
 
 import sys
 import uuid
-from ..generator import blockToCode
+
+from generators import blockToCode
 
 if hasattr(sys, 'setdefaultencoding'):
     sys.setdefaultencoding('UTF-8')

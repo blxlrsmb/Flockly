@@ -6,8 +6,7 @@ import sys
 if hasattr(sys, 'setdefaultencoding'):
     sys.setdefaultencoding('UTF-8')
 
-from upload_handler.generators.common import *
-from upload_handler.generator import blockToCode, getUniqueVarName
+from generators.common import *
 
 
 def controls_if(soup):
