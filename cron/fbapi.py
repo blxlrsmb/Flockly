@@ -7,19 +7,30 @@ from facebook import *
 from dateutil import parser
 import time
 import datetime
+import json
+import requests
 
 class FBUser:
     name = None # name
     id = None # id
-    city = None # location.name
-    sex = None # gender
-    birthday = None # birthday mm/dd/yyyy
+    # city = None # location.name
+    # sex = None # gender
+    # birthday = None # birthday mm/dd/yyyy
     def __str__(self):
         return self.name.encode('utf-8')
     def __unicode__(self):
         return self.name
     def __repr__(self):
         return str(self)
+    def __getattr__(self, name):
+        if hasattr(self, name):
+            return self.__dict__[name]
+        user_complete = getUserinfo(self.id)
+        self.city = user_complete.city
+        self.sex = user_complete.sex
+        self.has_birthday = user_complete.has_birthday
+        self.birthday = user_complete.birthday
+        return getattr(self, name)
 
 
 
@@ -56,14 +67,15 @@ def commentStatus(status, comment):
     graph.post('/%s/comments' % (status.id), params={'message': comment})
 
 
-def getStatus():
+def getAllStatus():
     graph = GraphAPI(access_token)
     statuses = []
     for i in graph.get('me/home?since=%s&access_token=%s&' % (B.lastexecution, access_token))['data']:
         status = FBStatus()
         status.id = i['id']
-        print i['from']
-        status.author = getUserinfo(i['from']['id'])
+        status.author = FBUser()
+        status.author.id = i['from']['id']
+        status.author.name = i['from']['name']
         if 'message' in i:
             status.content = i['message']
         else:
@@ -78,7 +90,6 @@ def getStatus():
         else:
             status.location = ''
         statuses.append(status)
-        print str(status)
     return statuses
 
 def getUserinfo(uid):
@@ -97,4 +108,24 @@ def getUserinfo(uid):
         rt_user.sex = ""
     if 'birthday' in user:
         rt_user.birthday = parser.parse(user['birthday'])
+        rt_user.has_birthday = True
+    else:
+        rt_user.has_birthday = False
+        rt_user.birthday = None
     return rt_user
+
+def getFriends():
+    graph = GraphAPI(access_token)
+    friends = []
+    res = graph.get('/me/friends')
+    while res['data']:
+        for i in res['data']:
+            fri = FBUser()
+            fri.id = i['id']
+            fri.name = i['name']
+            friends.append(fri)
+        if 'paging' in res and 'next' in res['paging']:
+            res = json.loads(requests.get(res['paging']['next']).text)
+    return friends
+
+
