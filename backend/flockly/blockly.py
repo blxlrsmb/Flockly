@@ -4,6 +4,8 @@
 # $Date: Fri Feb 14 22:05:33 2014 +0800
 # $Author: Xiaoyu Liu <i[at]vuryleo[dot]com>
 
+from mongoengine import *
+
 class Blockly(Document):
     userid = StringField(required=True)
     content = StringField(default="")
