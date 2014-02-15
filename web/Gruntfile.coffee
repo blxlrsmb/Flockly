@@ -80,11 +80,12 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-bower-task'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-shell'
   grunt.loadNpmTasks 'grunt-slim'
 
-  grunt.registerTask 'dev', ['copy:dev', 'coffee:dev', 'sass:dev', 'slim:dev']
+  grunt.registerTask 'dev', ['copy:dev', 'shell', 'coffee:dev', 'sass:dev', 'slim:dev']
   grunt.registerTask 'default', ['dev', 'connect', 'watch']

@@ -4,7 +4,9 @@
   "scripts": {
     "start": "grunt"
   },
-  "dependencies": {},
+  "dependencies": {
+    "grunt-shell": "~0.6.4"
+  },
   "devDependencies": {
     "grunt": "0.4.x",
     "grunt-contrib-coffee": "0.6.x",
