@@ -84,7 +84,7 @@ if id?
       setName data.name
       dom = Blockly.Xml.textToDom(data.content)
       if data.logs?
-        data.logs.forEach (log) ->
+        data.logs.reverse().forEach (log) ->
           i = $('#log-tabs').children().length
           $('#log-tabs').append tabTpt {i}
           $('#log-tabs-content').append tabContentTpt {i, content: log}

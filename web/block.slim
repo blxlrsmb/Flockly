@@ -134,7 +134,7 @@ html
         a id='log-tab-{{i}}' href='#log-{{i}}' Log {{i}}
     script#tab-content-tpt type='text/x-handlebars-template'
       .content id='log-{{i}}'
-        textarea
+        textarea readonly=true rows=20 style='height:auto;'
           | {{content}}
 
     .row.footer
