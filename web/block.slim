@@ -116,6 +116,9 @@ html
       category[name="Functions" custom="PROCEDURE"]
       category name="Datetime"
         block type="time_field"
+        block type="time_totTimesExecuted"
+        block type="time_lastTimeExecuted"
+        block type="time_currentTime"
       category name="Text"
         block type="text"
         block type="text_join"
@@ -137,6 +140,7 @@ html
         block type="fb_commentStatus"
         block type="fb_statusInfo"
         block type="fb_getAllStatus"
+        block type="fb_myself"
         block type="fb_getStatusOf"
         block type="fb_user"
 
@@ -147,5 +151,6 @@ html
     script src='js/blockly/blockly_compressed.js'
     script src='js/blockly/blocks_compressed.js'
     script src='js/blockly/blocks/facebook.js'
+    script src='js/blockly/blocks/datetime.js'
     script src='js/blockly/msg/js/en.js'
     script src='js/app.js'

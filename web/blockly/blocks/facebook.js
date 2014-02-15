@@ -1,5 +1,5 @@
 //File: facebook.js
-//Date: Sat Feb 15 15:12:18 2014 +0800
+//Date: Sat Feb 15 16:24:42 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 'use strict';
@@ -74,7 +74,7 @@ Blockly.Blocks['fb_getAllStatus'] = {
   init: function() {
     this.setColour(330);
     this.appendDummyInput()
-        .appendField("List of new status from my friends");
+        .appendField("List of new status from all my friends");
     this.setOutput(true, 'Array');
   }
 };
@@ -92,7 +92,16 @@ Blockly.Blocks['fb_user'] = {
 	init: function() {
 		this.setColour(330);
 		this.appendDummyInput()
-				.appendField(window.getFriendField(), "friend");
+				.appendField(window.blocklyTool.getFriendField(), "friend");
+		this.setOutput(true, 'USER');
+	}
+};
+
+Blockly.Blocks['fb_myself'] = {
+	init: function() {
+		this.setColour(330);
+		this.appendDummyInput()
+			.appendField("myself");
 		this.setOutput(true, 'USER');
 	}
 };
