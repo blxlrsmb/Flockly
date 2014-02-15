@@ -32,7 +32,8 @@ def getBlockTypes(s):
 def translate(s):
     """ feed xml string, return python code"""
     ret = ''
-    soup = UglySoup(s, convertEntities=UglySoup.HTML_ENTITIES)
+    soup = UglySoup(s, convertEntities=UglySoup.HTML_ENTITIES,
+                    fromEncoding='UTF-8')
     var_titles = soup.findAll('title', attrs={'name': 'VAR'})
     variables = set([i.text for i in var_titles])  # remove duplicated
     for i in soup.findAll('variable', attrs={'name': 'VAR'}):
