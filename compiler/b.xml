@@ -1,0 +1,28 @@
+<xml>
+	<block type="controls_forEach" id="29" inline="false" x="31" y="47">
+		<field name="VAR">i</field>
+		<value name="LIST">
+			<block type="fb_getAllStatus" id="16">
+			</block>
+		</value>
+		<statement name="DO">
+			<block type="fb_commentStatus" id="8" inline="true">
+				<value name="STATUS">
+					<block type="variables_get" id="34">
+						<field name="VAR">i</field>
+					</block>
+				</value>
+				<value name="TEXT">
+					<block type="fb_statusInfo" id="57" inline="true">
+						<field name="FIELD">author</field>
+						<value name="STATUS">
+							<block type="variables_get" id="62">
+								<field name="VAR">i</field>
+							</block>
+						</value>
+					</block>
+				</value>
+			</block>
+		</statement>
+	</block>
+</xml>

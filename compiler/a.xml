@@ -1,0 +1,23 @@
+<xml>
+	<block type="controls_forEach" id="10" inline="false" x="32" y="28">
+		<field name="VAR">i</field>
+		<value name="LIST">
+			<block type="fb_getFriends" id="17">
+			</block>
+		</value>
+		<statement name="DO">
+			<block type="fb_updateStatus" id="21" inline="false">
+				<value name="TEXT">
+					<block type="fb_userInfo" id="25" inline="true">
+						<field name="FIELD">name</field>
+						<value name="USER">
+							<block type="variables_get" id="30">
+								<field name="VAR">i</field>
+							</block>
+						</value>
+					</block>
+				</value>
+			</block>
+		</statement>
+	</block>
+</xml>

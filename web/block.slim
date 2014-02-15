@@ -1,0 +1,125 @@
+doctype 5
+html
+  head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title Flockly
+    link rel='stylesheet' href='css/app.css'
+  body
+    .row
+      .small-12.columns
+        h1 Flockly
+
+    .row
+      .small-12.columns
+        ul.breadcrumbs
+          li: a href='/' Home
+          li.current: a href='#' Block
+
+    .row
+      .small-12.columns
+        output#blockly style='display: block; height: 500px;'
+
+    .row.actions
+      .small-12.columns.text-center
+        a#export-xml.button.small href='#' Export XML
+
+    xml#toolbox[style="display: none"]
+      category[name="Control"]
+        category[name="If"]
+          block[type="controls_if"]
+          block[type="controls_if"]
+            mutation[else="1"]
+          block[type="controls_if"]
+            mutation[elseif="1" else="1"]
+        category[name="Loops"]
+          block[type="controls_repeat_ext"]
+            value[name="TIMES"]
+              block[type="math_number"]
+                field[name="NUM"]
+                  | 10
+          block[type="controls_whileUntil"]
+          block[type="controls_for"]
+            field[name="VAR"]
+              | i
+            value[name="FROM"]
+              block[type="math_number"]
+                field[name="NUM"]
+                  | 1
+            value[name="TO"]
+              block[type="math_number"]
+                field[name="NUM"]
+                  | 10
+            value[name="BY"]
+              block[type="math_number"]
+                field[name="NUM"]
+                  | 1
+          block[type="controls_forEach"]
+          block[type="controls_flow_statements"]
+      category[name="Logic"]
+        block[type="logic_compare"]
+        block[type="logic_operation"]
+        block[type="logic_negate"]
+        block[type="logic_boolean"]
+        block[type="logic_null"]
+        block[type="logic_ternary"]
+      category[name="Math"]
+        block[type="math_number"]
+        block[type="math_arithmetic"]
+        block[type="math_single"]
+        block[type="math_trig"]
+        block[type="math_constant"]
+        block[type="math_number_property"]
+        block[type="math_change"]
+          value[name="DELTA"]
+            block[type="math_number"]
+              field[name="NUM"]
+                | 1
+        block[type="math_round"]
+        block[type="math_on_list"]
+        block[type="math_modulo"]
+        block[type="math_constrain"]
+          value[name="LOW"]
+            block[type="math_number"]
+              field[name="NUM"]
+                | 1
+          value[name="HIGH"]
+            block[type="math_number"]
+              field[name="NUM"]
+                | 100
+        block[type="math_random_int"]
+          value[name="FROM"]
+            block[type="math_number"]
+              field[name="NUM"]
+                | 1
+          value[name="TO"]
+            block[type="math_number"]
+              field[name="NUM"]
+                | 100
+        block[type="math_random_float"]
+      category[name="Lists"]
+        block[type="lists_create_empty"]
+        block[type="lists_create_with"]
+        block[type="lists_repeat"]
+          value[name="NUM"]
+            block[type="math_number"]
+              field[name="NUM"]
+                | 5
+        block[type="lists_length"]
+        block[type="lists_isEmpty"]
+        block[type="lists_indexOf"]
+        block[type="lists_getIndex"]
+        block[type="lists_setIndex"]
+      category[name="Variables" custom="VARIABLE"]
+      category[name="Functions" custom="PROCEDURE"]
+      category[name="facebook"]
+        block[type="fb_getFriends"]
+        block[type="fb_updateStatus"]
+        block[type="fb_userInfo"]
+
+    script src='js/jquery/jquery.min.js'
+    script src='js/blockly/blockly_compressed.js'
+    script src='js/blockly/blocks_compressed.js'
+    script src='js/blockly/blocks/facebook.js'
+    script src='js/blockly/msg/js/en.js'
+    script src='js/app.js'
