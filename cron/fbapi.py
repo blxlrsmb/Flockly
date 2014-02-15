@@ -129,3 +129,27 @@ def getFriends():
     return friends
 
 
+def getStatusOf(u):
+    graph = GraphAPI(access_token)
+    statuses = []
+    for i in graph.get('/%s/feed?since=%d&access_token=%s&' % (u.id, B.lastexecution, access_token))['data']:
+        status = FBStatus()
+        status.id = i['id']
+        status.author = FBUser()
+        status.author.id = i['from']['id']
+        status.author.name = i['from']['name']
+        if 'message' in i:
+            status.content = i['message']
+        else:
+            status.content = ''
+        status.time = datetime.datetime.fromtimestamp(
+                time.mktime(
+                    parser.parse(i['created_time']).utctimetuple()
+                    )
+                )
+        if 'place' in i and 'location' in i['place'] and 'city' in i['place']['location']:
+            status.location = i['place']['location']['city']
+        else:
+            status.location = ''
+        statuses.append(status)
+    return statuses

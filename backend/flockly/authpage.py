@@ -11,7 +11,9 @@ import time
 def auth():
     f = FacebookAPI(config.API_KEY, config.API_SECRET, config.REDIRECT_URL)
     auth_url = f.get_auth_url(scope=[
-        "publish_stream", "read_stream", "status_update", "user_friends", "friends_birthday", "friends_hometown", "friends_location"
+        "publish_stream", "read_stream", "status_update", "user_friends",
+        "friends_birthday", "friends_hometown", "friends_location",
+        "user_birthday", "user_hometown", "user_location"
         ])
     return redirect(auth_url)
 
