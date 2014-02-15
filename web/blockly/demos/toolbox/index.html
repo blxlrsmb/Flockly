@@ -5,8 +5,18 @@
   <title>Blockly Demo: Toolbox</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../blocks_compressed.js"></script>
-  <script type="text/javascript" src="../../blocks/facebook.js"></script>
   <script type="text/javascript" src="../../msg/js/en.js"></script>
+	<script type="text/javascript">
+		getFriendField =  function() {
+			var friends = ['Fangrui', 'Qijiang', 'Yuxin'];
+			var tmplist = [];
+			friends.forEach(function(name) {
+				tmplist.push([name, name]);
+			});
+			return new Blockly.FieldDropdown(tmplist);
+		};
+	</script>
+  <script type="text/javascript" src="../../blocks/facebook.js"></script>
   <style>
     body {
       background-color: #fff;
@@ -143,7 +153,9 @@
 			<block type="text"></block>
 			<block type="text_join"></block>
 			<block type="text_create_join_container"></block>
-			<block type="text_create_join_item"></block>
+			<!--
+				 -<block type="text_create_join_item"></block>
+				 -->
 			<block type="text_append"></block>
 			<block type="text_length"></block>
 			<block type="text_isEmpty"></block>
