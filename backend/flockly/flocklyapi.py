@@ -77,7 +77,7 @@ def get_blockly():
     else:
         return Response('', status=404)
 
-@app.route('/delete_blockly', methods=["DELETE"])
+@app.route('/delete_blockly', methods=["POST"])
 @basefunc.auth_required
 def delete_blockly():
     try:
