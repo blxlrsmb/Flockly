@@ -4,6 +4,9 @@ id = cs?.id
 setName = (name) ->
   $('#name-input').val name
 
+getName = (name) ->
+  $('#name-input').val()
+
 getXML = ->
   Blockly.Xml.domToText Blockly.Xml.workspaceToDom Blockly.mainWorkspace
 
@@ -21,7 +24,7 @@ Flockly.getProfile (data, status, xhr) ->
 
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
-  Flockly.saveData getXML(), 'meow.xml'
+  Flockly.saveData getXML(), getName() or 'block.xml'
 
 $('#save-block').on 'click', (ev) ->
   ev.preventDefault()
@@ -29,7 +32,7 @@ $('#save-block').on 'click', (ev) ->
   uri = "#{uri}?id=#{id}" if id
   data =
     content: getXML()
-    name: $('#name-input').val()
+    name: getName()
   if id?
     data.id = id
   $.post uri, data, (id) ->
