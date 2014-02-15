@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 # File: fb.py
-# Date: Sat Feb 15 20:23:49 2014 +0800
+# Date: Sun Feb 16 00:19:51 2014 +0800
 # Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 from generators.common import valueToCode
@@ -46,3 +46,7 @@ def fb_getStatusOf(soup):
     user = valueToCode(soup, 'USER')
     user = 'FBUser({0})'.format(user)
     return 'getStatusOf({0})'.format(user)
+
+def fb_have_birthday(soup):
+    user = valueToCode(soup, 'USER')
+    return "(({0}).has_birthday)".format(user)

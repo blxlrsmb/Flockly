@@ -1,5 +1,5 @@
 //File: facebook.js
-//Date: Sun Feb 16 00:08:10 2014 +0800
+//Date: Sun Feb 16 00:19:26 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 'use strict';
@@ -106,5 +106,16 @@ Blockly.Blocks['fb_myself'] = {
 		this.appendDummyInput()
 			.appendField("myself");
 		this.setOutput(true, 'USER');
+	}
+};
+
+Blockly.Blocks['fb_have_birthday'] = {
+	init: function() {
+		this.setColour(330);
+		this.appendValueInput('USER')
+				.appendField("birthday of user");
+		this.appendDummyInput().appendField('is available')
+		this.setInputsInline(true);
+		this.setOutput(true, 'Boolean');
 	}
 };
