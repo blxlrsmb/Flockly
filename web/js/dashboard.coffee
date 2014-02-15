@@ -33,11 +33,8 @@ $file.on 'change', ->
   if @.files.length > 0
     r = new FileReader
     r.onload = (e) ->
-      $.post '/upload_blockly',
-        content: e.target.result
-        name: 'New Block'
-        success: ->
-          location.reload()
+      $.post '/upload_blockly', {content: e.target.result, name: 'New Block'}, ->
+        location.reload()
     r.readAsText @.files[0]
     @.value = null
 $('#import-xml').on 'click', (ev) ->
