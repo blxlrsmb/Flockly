@@ -196,7 +196,7 @@ def getStatusOf(u):
 
 
 lastTimeExecuted = B.lastexecution
-totTimesExecuted = B.timesexecuted
+totTimesExecuted = datetime.datetime.utcfromtimestamp(B.timesexecuted)
 currentTime = datetime.datetime.utcnow
 myself = lambda: getUserinfo(U.userid)
 
