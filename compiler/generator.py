@@ -3,6 +3,9 @@
 
 from generators import *
 
+#import sys
+#sys.tracebacklimit=0
+
 if __name__ == '__main__':
     BASE_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
     if BASE_PATH not in sys.path:
