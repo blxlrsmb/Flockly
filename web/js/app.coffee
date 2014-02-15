@@ -17,7 +17,6 @@ exports.getProfile = (success, fail) ->
     dataType: 'json'
     success: success
     error: fail
-    crossDomain: true
     xhrFields:
       withCredentials: true
 
