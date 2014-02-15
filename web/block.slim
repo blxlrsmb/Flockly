@@ -121,6 +121,20 @@ html
         block type="fb_getStatusOf"
         /block type="fb_user"
 
+    .row
+      .small-12.columns
+        dl#log-tabs.tabs data-tab=true
+        #log-tabs-content.tabs-content
+
+    script#tab-tpt type='text/x-handlebars-template'
+      dd
+        a id='log-tab-{{i}}' href='#log-{{i}}' Log {{i}}
+    script#tab-content-tpt type='text/x-handlebars-template'
+      .content id='log-{{i}}'
+        textarea
+          | {{content}}
+
+    script src='js/handlebars/handlebars.min.js'
     script src='js/lodash/lodash.min.js'
     script src='js/jquery/jquery.min.js'
     script src='js/modernizr/modernizr.js'

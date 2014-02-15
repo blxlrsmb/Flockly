@@ -25,10 +25,10 @@ Flockly.getProfile (data, status, xhr) ->
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
   name = getName()
-  if name?
-    name = "#{name}.xml"
-  else
+  if name == ''
     name = 'block.xml'
+  else
+    name = "#{name}.xml"
   Flockly.saveData getXML(), name
 
 $('#import-xml').on 'click', (ev) ->
@@ -57,9 +57,18 @@ $('#save-block').on 'click', (ev) ->
     history.replaceState null, null, "?id=#{id}"
 
 if id?
+  tabTpt = Handlebars.compile $('#tab-tpt').html()
+  tabContentTpt = Handlebars.compile $('#tab-content-tpt').html()
   $.getJSON "/get_blockly?id=#{id}", (data) ->
     try
       setName data.name
       dom = Blockly.Xml.textToDom(data.content)
+      if data.logs?
+        data.logs.forEach (log) ->
+          i = $('#log-tabs').children().length
+          $('#log-tabs').append tabTpt {i}
+          $('#log-tabs-content').append tabContentTpt {i, content: log}
+        $('#log-tab-0').parent().addClass 'active'
+        $('#log-0').addClass 'active'
       Blockly.Xml.domToWorkspace Blockly.mainWorkspace, dom
     catch
