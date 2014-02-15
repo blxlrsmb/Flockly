@@ -9,10 +9,10 @@ renameTag = (node, name) ->
 
 ## Main
 
+$.ajaxSetup error: -> location.replace '/'
+
 Flockly.getProfile (data, status, xhr) ->
   console.log 'logged in'
-, ->
-  location.replace '/'
 
 $('#search-input').on 'input', ->
   needle = new RegExp($(@).val(), 'i')
