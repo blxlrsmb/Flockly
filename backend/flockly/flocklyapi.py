@@ -55,7 +55,7 @@ def upload_blockly():
 def get_blockly_list():
     blocklies = []
     for i in flockly.blockly.Blockly.objects(userid=session['uid']):
-        blocklies.append({'id': str(i.id), 'name': i.name})
+        blocklies.append({'id': str(i.id), 'name': i.name, 'enabled': i.enabled})
     return blocklies
 
 
