@@ -13,6 +13,14 @@ import bson
 
 print "[SYSTEM] Initializing FBAPI"
 
+def to_unicode(s):
+    if isinstance(s, str):
+        return s.decode('utf-8')
+    elif isinstance(s, unicode):
+        return s
+    else:
+        return u''
+
 class FBUser:
     name = None # name
     id = None # id
@@ -70,13 +78,16 @@ B = Blockly.objects(pk=bson.objectid.ObjectId(BID))[0]
 def updateStatus(message):
     graph = GraphAPI(access_token)
     graph.post('/me/feed', params={'message': message})
-    print >>sys.stderr, "[SYSTEM] update status %s..." % (message[:10])
+    print >>sys.stderr, "[SYSTEM] update status %s..." % (to_unicode(message)[:10].encode('utf-8'))
 
 
 def commentStatus(status, comment):
     graph = GraphAPI(access_token)
     graph.post('/%s/comments' % (status.id), params={'message': comment})
-    print >>sys.stderr, "[SYSTEM] comment status %s... with %s..." % (status.content[:10], comment[:10])
+    print >>sys.stderr, "[SYSTEM] comment status %s... with %s..." % (
+            to_unicode(status.content)[:10].encode('utf-8'),
+            to_unicode(comment)[:10].encode('utf-8')
+            )
 
 
 def getAllStatus():
