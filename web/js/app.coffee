@@ -1,6 +1,21 @@
 ## Functions
 
-saveData = do ->
+exports = {}
+window.Flockly = exports
+host = 'http://203.91.121.47:8099'
+
+exports.getProfile = (success, fail) ->
+  $.ajax
+    url: "#{host}/get_profile"
+    dataType: 'json'
+    cache: false
+    success: success
+    error: fail
+    crossDomain: true
+    xhrFields:
+      withCredentials: true
+
+exports.saveData = do ->
   a = document.createElement 'a'
   a.style = 'display: none;'
   document.body.appendChild a
@@ -10,13 +25,6 @@ saveData = do ->
     a.download = filename
     a.click()
     URL.revokeObjectURL a.href
-
-renameTag = (node, name) ->
-  unless node.jquery
-    node = $(node)
-  node2 = $('<'+name+'/>').html node.html()
-  node.replaceWith node2
-  node2
 
 ## Foundation
 
@@ -29,17 +37,7 @@ if Blockly?
     path: 'js/blockly/'
     toolbox: $('#toolbox')[0]
 
-$('#search-input').on 'input', ->
-  needle = new RegExp($(@).val(), 'i')
-  $('#blocks ol').each (_, el) ->
-    el.style.display = ''
-    renameTag el, 'li'
-  $('#blocks li').each (_, el) ->
-    unless $('.block-name', el).text().match needle
-      x = renameTag(el, 'ol')
-      x[0].style.display = 'none'
-
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
   xml = Blockly.Xml.domToText Blockly.Xml.workspaceToDom Blockly.mainWorkspace
-  saveData xml, 'meow.xml'
+  exports.saveData xml, 'meow.xml'

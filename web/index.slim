@@ -1,3 +1,5 @@
+- host = 'http://203.91.121.47:8099'
+
 doctype 5
 html
   head
@@ -11,30 +13,13 @@ html
         h1 Flockly
 
     .row
-      .small-10.columns
-        ul.breadcrumbs
-          li.current: a href='/' Home
-      .small-2.columns
-        a#new-block.button.small href='#' New Block
-
-    form.row
-      .small-6.small-centered.columns
-        .row.collapse
-          .small-10.columns
-            input#search-input type='text' placeholder='Search projects' autofocus=true
-          .small-2.columns
-            button.button.postfix Search
-    .row
-      .small-12.columns
-        ul#blocks.large-block-grid-4.medium-block-grid-3.small-block-grid-2
-          - 9.times do |i|
-            li
-              .callout.panel
-                a.block-name href='block.html' = "Meow#{i}"
-                .block-detail
-                  span Last modified on
-                  span.block-date Feb 15 2014 12:13
-                .block-tags
+      .masthead.small-12.columns.text-center
+        .masthead Improve your Facebook workflow
+        a.button.round href="#{host}/auth" Sign in with Facebook
 
     script src='js/jquery/jquery.min.js'
+    script src='js/modernizr/modernizr.js'
+    script src='js/fastclick/fastclick.js'
+    script src='js/foundation/foundation.min.js'
     script src='js/app.js'
+    script src='js/index.js'
