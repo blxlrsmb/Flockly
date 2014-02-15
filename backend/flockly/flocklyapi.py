@@ -92,16 +92,16 @@ def enable_block():
     except:
         return Response('', status=404)
 
-@app.route('/reset', methods=['POST'])
+@app.route('/reset_blockly', methods=['POST'])
 @basefunc.auth_required
 def reset_block():
     try:
-        for i in flockly.blockly.Blockly.objects(id=request.args.get('id', ''), userid=session['uid']):
+        for i in flockly.blockly.Blockly.objects(id=request.form['id'], userid=session['uid']):
             i.timesexecuted = 0
             i.lastexecution = 0
             i.logs = []
             i.save()
-        return 'ok'
+        return ''
     except:
         return Response('', status=404)
 
@@ -110,7 +110,7 @@ def reset_block():
 def delete_blockly():
     try:
         flockly.blockly.Blockly.objects(id=request.form['id'], userid=session['uid']).delete()
-        return 'ok'
+        return ''
     except:
         return Response('', status=404)
 
