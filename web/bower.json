@@ -8,9 +8,19 @@
   },
   "exportsOverride": {
     "jquery": {
-      "js": "dist/jquery.min.js"
+      "js": [
+        "dist/jquery.min.js",
+        "dist/jquery.min.map"
+      ]
     },
     "foundation": {
+      "js": "js/foundation.min.js"
+    },
+    "modernizr": {
+      "js": "modernizr.js"
+    },
+    "fastclick": {
+      "js": "lib/fastclick.js"
     }
   }
 }
