@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 # File: fb.py
-# Date: Sat Feb 15 13:52:12 2014 +0800
+# Date: Sat Feb 15 16:36:58 2014 +0800
 # Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 def fb_getFriends(soup):
@@ -30,3 +30,6 @@ def fb_statusInfo(soup):
 #TODO check safe fields
     status = valueToCode(soup, 'STATUS')
     return '({0}.{1})'.format(status, field)
+
+def fb_myself(soup):
+    return 'myself()'
