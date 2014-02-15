@@ -1,5 +1,5 @@
 //File: datetime.js
-//Date: Sat Feb 15 16:25:19 2014 +0800
+//Date: Sat Feb 15 18:35:38 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 
@@ -18,6 +18,25 @@ Blockly.Blocks['time_field'] = {
 				.appendField(dropdown, 'FIELD')
 				.appendField("of the time");
 		this.setOutput(true, 'Number');
+	}
+};
+
+Blockly.Blocks['time_time'] = {
+	init: function() {
+		this.setColour(150);
+		this.appendDummyInput()
+			.appendField('time')
+			.appendField(new Blockly.FieldTextInput('2014'), 'YEAR')
+			.appendField('-')
+			.appendField(new Blockly.FieldTextInput('1'), 'MONTH')
+			.appendField('-')
+			.appendField(new Blockly.FieldTextInput('1'), 'DAY')
+			.appendField(' ')
+			.appendField(new Blockly.FieldTextInput('0'), 'HOUR')
+			.appendField(':')
+			.appendField(new Blockly.FieldTextInput('0'), 'MINUTE')
+		this.setInputsInline(true);
+		this.setOutput(true, 'DATETIME');
 	}
 };
 
