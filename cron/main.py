@@ -22,15 +22,24 @@ while True:
                 if time.time() - lastexecution < MIN_GAP:
                     continue
                 f = open('/tmp/flockly.xml', 'wb')
+                print blo.content
                 f.write(blo.content)
                 f.close()
-                f = open('/tmp/flockly.py', 'wb')
-                f.write('from fbapi import *')
+                f = open('./flockly.py', 'wb')
+                f.write("# coding: utf-8\nfrom fbapi import *\nimport sys\nreload(sys)\nsys.setdefaultencoding('utf-8')\n")
                 f.close()
-                os.system(GENERATOR_PATH + " /tmp/flockly.xml >> /tmp/flockly.py")
-                os.system(PYTHON_CMD + " /tmp/flockly.py " + blo.userid + " " + str(blo.id) + ">/dev/null 2>/dev/null")
+                os.system("echo [SYSTEM] Generating code > /tmp/flockly.run.log")
+                os.system(GENERATOR_PATH + " /tmp/flockly.xml >> ./flockly.py 2>>/tmp/flockly.run.log")
+                os.system("echo [SYSTEM] Generated code: >> /tmp/flockly.run.log")
+                os.system("cat ./flockly.py >> /tmp/flockly.run.log")
+                os.system("echo [SYSTEM] Running >> /tmp/flockly.run.log")
+                os.system(PYTHON_CMD + " ./flockly.py " + blo.userid + " " + str(blo.id)  + " 1>>/tmp/flockly.run.log 2>&1")
+                os.unlink('./flockly.py')
                 blo.lastexecution = int(time.time())
                 blo.timesexecuted = blo.timesexecuted + 1
+                blo.logs.append(open('/tmp/flockly.run.log', 'rb').read(1024))
+                if len(blo.logs) > 5:
+                    blo.logs = blo.logs[-5:]
                 blo.save()
             except Exception as e:
                 print >>sys.stderr, e

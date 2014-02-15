@@ -15,13 +15,13 @@ def time_field(soup):
     return "({0}.{1})".format(dt, field)
 
 def time_currentTime(soup):
-    return '(datetime.date(1, 1, 1))'
+    return 'currentTime()'
 
 def time_lastTimeExecuted(soup):
-    return '(datetime.date(1, 1, 1))'
+    return 'lastTimeExecuted'
 
 def time_totTimesExecuted(soup):
-    return '1'
+    return 'totTimesExecuted'
 
 def time_time(soup):
     year = int(findName(soup, 'YEAR').text)

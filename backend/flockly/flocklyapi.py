@@ -71,7 +71,8 @@ def get_blockly():
                 'id': str(a_blockly.id),
                 'userid': a_blockly.userid,
                 'content': a_blockly.content,
-                'name': a_blockly.name
+                'name': a_blockly.name,
+                'logs': a_blockly.logs
                 }
     else:
         return Response('', status=404)
