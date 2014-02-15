@@ -28,7 +28,15 @@ $('#export-xml').on 'click', (ev) ->
 
 $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
-  Flockly.saveData getXML(), getName() or 'block.xml'
+
+$('#delete-block').on 'click', (ev) ->
+  ev.preventDefault()
+  $.ajax
+    type: 'POST'
+    url: '/delete_blockly'
+    data: {id}
+    success: ->
+      location.replace '/dashboard'
 
 $('#save-block').on 'click', (ev) ->
   ev.preventDefault()
