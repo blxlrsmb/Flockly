@@ -94,5 +94,5 @@ def delete_blockly():
 def get_profile():
     token = flockly.authpage.get_user_access_token(session['uid'])
     graph = GraphAPI(token)
-    profile = graph.get('/me?fields=id,name,picture&access_token=%s&' % (token))
+    profile = graph.get('/me?fields=id,name,picture.type(large)&access_token=%s&' % (token))
     return profile
