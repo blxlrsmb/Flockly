@@ -8,12 +8,12 @@ if hasattr(sys, 'setdefaultencoding'):
 
 from generators.common import *
 
+def text(soup):
+    return repr(findName(soup, 'TEXT').text)
+
 def text_print(soup):
     to_print = valueToCode(soup, 'TEXT')
     return 'print {0}'.format(to_print)
-
-def text(soup):
-    return repr(findName(soup, 'TEXT').text)
 
 def text_join(soup):
     num = int(soup.findChild('mutation')['item'])
@@ -31,5 +31,5 @@ def text_fromOther(soup):
     return funcToCode(soup, 'unicode', 'TEXT')
 
 def text_include(soup):
-    return valueToCode(soup, 'KEY') + ' in ' + \
-            valueToCode(soup, 'VALUE')
+    return 'str({0}) in str({1})'.format(valueToCode(soup, 'VALUE'),
+                                        valueToCode(soup, 'FIND'))

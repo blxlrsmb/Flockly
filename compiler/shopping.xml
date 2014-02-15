@@ -1,0 +1,46 @@
+<xml>
+	<block type="controls_forEach" id="50" inline="false" x="-24" y="125">
+		<field name="VAR">status</field>
+		<value name="LIST">
+			<block type="fb_getStatusOf" id="30" inline="false">
+				<value name="USER">
+					<block type="fb_user" id="40">
+						<field name="friend">Fangrui</field>
+					</block>
+				</value>
+			</block>
+		</value>
+		<statement name="DO">
+			<block type="controls_if" id="54" inline="false">
+				<value name="IF0">
+					<block type="text_include" id="7" inline="true">
+						<value name="VALUE">
+							<block type="text" id="14">
+								<field name="TEXT">shopping</field>
+							</block>
+						</value>
+						<value name="FIND">
+							<block type="variables_get" id="59">
+								<field name="VAR">status</field>
+							</block>
+						</value>
+					</block>
+				</value>
+				<statement name="DO0">
+					<block type="fb_commentStatus" id="76" inline="true">
+						<value name="STATUS">
+							<block type="variables_get" id="81">
+								<field name="VAR">status</field>
+							</block>
+						</value>
+						<value name="TEXT">
+							<block type="text" id="88">
+								<field name="TEXT">You are shopping again!</field>
+							</block>
+						</value>
+					</block>
+				</statement>
+			</block>
+		</statement>
+	</block>
+</xml>

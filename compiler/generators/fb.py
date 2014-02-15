@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 # File: fb.py
-# Date: Sat Feb 15 16:56:31 2014 +0800
+# Date: Sat Feb 15 17:30:44 2014 +0800
 # Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 def fb_getFriends(soup):
