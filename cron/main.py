@@ -9,8 +9,8 @@ import sys
 reload(sys)
 sys.setdefaultencoding(sys.getfilesystemencoding())
 
-MIN_GAP = 60
-GENERATOR_PATH = "../generator/generate.py"
+MIN_GAP = 5
+GENERATOR_PATH = "../compiler/generator.py"
 PYTHON_CMD = "python2"
 
 
@@ -27,13 +27,15 @@ while True:
                 f = open('/tmp/flockly.py', 'wb')
                 f.write('from fbapi import *')
                 f.close()
-                os.system(GENERATOR_PATH + " >> /tmp/flockly.py")
+                os.system(GENERATOR_PATH + " /tmp/flockly.xml >> /tmp/flockly.py")
                 os.system(PYTHON_CMD + " /tmp/flockly.py " + blo.userid + " " + str(blo.id) + ">/dev/null 2>/dev/null")
                 blo.lastexecution = int(time.time())
                 blo.timesexecuted = blo.timesexecuted + 1
                 blo.save()
             except Exception as e:
                 print >>sys.stderr, e
+            finally:
+                time.sleep(1)
 
     except Exception as e:
         print >>sys.stderr, e
