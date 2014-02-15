@@ -32,7 +32,9 @@ html
               li: a#reset-block href='#' Clear Execution Log
               li: a#clone-block href='#' Clone
               li: a#delete-block href='#' Delete
+              li: a#share-block href='#' Get Share Link
             input#xml-file type='file' style='display:none;'
+            a#share-modal-btn data-reveal-id='share-modal' style='display:none;'
           li
             a#save-block.button.small href='#' Save
 
@@ -137,6 +139,10 @@ html
       .content id='log-{{i}}'
         textarea readonly=true rows=20 style='height:auto;'
           | {{content}}
+
+    #share-modal.reveal-modal.text-center data-reveal=true
+      a#share-link
+      a#share-button.button.small style='margin-left:5em;' href='#' Copy to Clipboard
 
     .row.footer
       #developer

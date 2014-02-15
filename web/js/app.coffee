@@ -3,6 +3,15 @@
 exports = {}
 window.Flockly = exports
 
+exports.copyToClipboard = (data) ->
+  ta = document.createElement 'textarea'
+  ta.style.opacity = '0'
+  ta.innerText = data
+  document.body.appendChild ta
+  ta.focus()
+  ta.select()
+  ta.remove()
+
 exports.getQueryParams = ->
   cs = location.search.substr(1)
   return null unless cs?

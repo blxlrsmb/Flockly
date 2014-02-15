@@ -63,6 +63,25 @@ $('#delete-block').on 'click', (ev) ->
     success: ->
       location.replace '/dashboard'
 
+$('#share-block').on 'click', (ev) ->
+  ev.preventDefault()
+  $.post '/share', {id}, (data) ->
+    if data
+      $a = $('#share-link')
+      $a.attr 'href', data
+      $a.text data
+      Flockly.copyToClipboard data
+      $('#share-modal-btn').trigger 'click'
+  #$.ajax
+  #  type: 'POST'
+  #  url: '/share_blockly'
+  #  data: {id}
+  #  success: ->
+  #    location.replace '/dashboard'
+$('#share-button').on 'click', ->
+  Flockly.copyToClipboard $('#share-link').text()
+  false
+
 $('#reset-block').on 'click', (ev) ->
   ev.preventDefault()
   $.ajax
