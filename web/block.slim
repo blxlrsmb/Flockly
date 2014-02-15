@@ -11,16 +11,22 @@ html
         h1 Flockly
 
     .row
-      .small-10.columns
+      .small-6.columns
         ul.breadcrumbs
           li: a href='/dashboard' Home
           li.current: a href='#' Block
-      .small-2.columns
-        a.button.dropdown.small href='#' data-dropdown='drop-actions' Actions
-        ul#drop-actions.f-dropdown data-dropdown-content=true
-          li: a#export-xml href='#' Export XML
-          li: a#clone-block href='#' Clone
-          li: a#delete-block href='#' Delete
+      .small-3.columns
+        input#name-input type='text' placeholder='Name' autofocus=true
+      .small-3.columns
+        ul.button-group
+          li
+            a.button.dropdown.small href='#' data-dropdown='drop-actions' Actions
+            ul#drop-actions.f-dropdown data-dropdown-content=true
+              li: a#export-xml href='#' Export XML
+              li: a#clone-block href='#' Clone
+              li: a#delete-block href='#' Delete
+          li
+            a.button.small href='#' Save
 
     .row
       .small-12.columns
