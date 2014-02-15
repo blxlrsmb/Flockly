@@ -16,9 +16,9 @@ def text_print(soup):
     return 'print {0}'.format(to_print)
 
 def text_join(soup):
-    num = int(soup.findChild('mutation')['item'])
+    num = int(soup.findChild('mutation')['items'])
     texts = [valueToCode(soup, 'ADD' + str(x)) for x in xrange(num)]
-    return ' + '.join(texts)
+    return ' + '.join(["str({0})".format(k) for k in texts])
 
 def text_length(soup):
     return funcToCode(soup, 'len', 'VALUE')
