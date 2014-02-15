@@ -15,6 +15,10 @@ $.ajaxSetup
   error: ->
     location.replace '/'
 
+Flockly.getProfile (data, status, xhr) ->
+  $('.profile-picture').attr 'src', data.picture.data.url
+  $('.profile-name').text data.name
+
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
   Flockly.saveData getXML(), 'meow.xml'

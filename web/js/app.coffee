@@ -15,7 +15,6 @@ exports.getProfile = (success, fail) ->
   $.ajax
     url: "/get_profile"
     dataType: 'json'
-    cache: false
     success: success
     error: fail
     crossDomain: true
