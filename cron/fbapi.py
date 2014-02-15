@@ -10,7 +10,6 @@ import datetime
 import json
 import requests
 import bson
-import copy
 
 print "[SYSTEM] Initializing FBAPI"
 
@@ -35,6 +34,7 @@ class FBUser:
         if hasattr(self, name):
             return self.__dict__[name]
         user_complete = getUserinfo(self.id)
+        print >>sys.stderr, 'lalla', name
         self.city = user_complete.city
         self.sex = user_complete.sex
         self.has_birthday = user_complete.has_birthday
@@ -105,8 +105,6 @@ def getAllStatus():
     return statuses
 
 def getUserinfo(uid):
-    if uid in FBUsers:
-        return copy.deepcopy(FBUsers[uid])
     graph = GraphAPI(access_token)
     user = graph.get('/' + uid)
     rt_user = FBUser()
@@ -151,7 +149,6 @@ def getMyFriends():
             else:
                 fri.has_birthday = False
                 fri.birthday = None
-            FBUsers[fri.id] = copy.deepcopy(fri)
             friends.append(fri)
         if 'paging' in res and 'next' in res['paging']:
             res = json.loads(requests.get(res['paging']['next']).text)
