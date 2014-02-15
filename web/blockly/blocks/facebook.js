@@ -1,5 +1,5 @@
 //File: facebook.js
-//Date: Sun Feb 16 00:19:26 2014 +0800
+//Date: Sun Feb 16 05:02:36 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 'use strict';
@@ -48,8 +48,8 @@ Blockly.Blocks['fb_userInfo'] = {
                 ['The id of the user', 'id'],
                 ['The city of the user', 'city']]);
 				this.appendValueInput('USER')
-							.appendField(dropdown, 'FIELD');
-        this.setOutput(true, 'TEXT');
+						.appendField(dropdown, 'FIELD');
+        this.setOutput(true, 'String');
         this.setInputsInline(true);
     }
 };
@@ -65,7 +65,7 @@ Blockly.Blocks['fb_statusInfo'] = {
 								['The location of the status', 'location']]);
 				this.appendValueInput('STATUS')
 						.appendField(dropdown, 'FIELD');
-        this.setOutput(true, 'TEXT');
+        this.setOutput(true, 'String');
         this.setInputsInline(true);
     }
 };
