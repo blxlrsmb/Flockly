@@ -7,17 +7,20 @@ html
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     meta name='description' content='Flockly'
     title Flockly
-    link rel='shortcut icon' href='/favicon.ico'
+    link rel='shortcut icon' href='/assets/favicon.ico'
     link rel='stylesheet' href='css/app.css'
   body
-    .row
-      .small-12.columns
+    .row.header
+      .small-12.columns#logo
+        img src='/assets/flockly.png'
         h1 Flockly
 
     .row
       .masthead.small-12.columns.text-center
         .masthead Improve your Facebook workflow
-        a.button.round href="#{host}/auth" Sign in with Facebook
+        button#login
+          / a.button.round href="#{host}/auth" Sign in with Facebook
+    .row.footer
 
     script src='js/jquery/jquery.min.js'
     script src='js/modernizr/modernizr.js'
