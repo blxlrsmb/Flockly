@@ -1,5 +1,5 @@
 //File: facebook.js
-//Date: Sat Feb 15 16:48:57 2014 +0800
+//Date: Sat Feb 15 21:43:40 2014 +0800
 //Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 'use strict';
@@ -91,6 +91,7 @@ Blockly.Blocks['fb_getStatusOf'] = {
 Blockly.Blocks['fb_user'] = {
 	init: function() {
 		this.setColour(330);
+		while (! window.blocklyTool.friends) {}
 		this.appendDummyInput()
 				.appendField(window.blocklyTool.getFriendField(), "friend");
 		this.setOutput(true, 'USER');
