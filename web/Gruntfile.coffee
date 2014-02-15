@@ -87,5 +87,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-shell'
   grunt.loadNpmTasks 'grunt-slim'
 
-  grunt.registerTask 'dev', ['copy:dev', 'shell', 'coffee:dev', 'sass:dev', 'slim:dev']
+  grunt.registerTask 'dev', ['copy:dev', 'coffee:dev', 'sass:dev', 'slim:dev']
   grunt.registerTask 'default', ['dev', 'connect', 'watch']
