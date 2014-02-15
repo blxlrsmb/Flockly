@@ -21,7 +21,12 @@ html
         ul.breadcrumbs
           li.current: a href='/dashboard' Home
       .small-3.columns
-        a#new-block.button.small href='/block' New Block
+        a#new-block.button.split.small href='/block'
+          | New Block
+          span data-dropdown='drop-actions'
+        ul#drop-actions.f-dropdown
+          li: a#import-xml href='#' Import XML
+        input#xml-file type='file' style='display:none;'
 
     form.row
       .small-6.small-centered.columns

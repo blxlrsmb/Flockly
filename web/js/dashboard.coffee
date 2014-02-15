@@ -25,6 +25,21 @@ $('#search-input').on 'input', ->
       x = renameTag(el, 'ol')
       x[0].style.display = 'none'
 
+$file = $('#xml-file')
+$file.on 'change', ->
+  if @.files.length > 0
+    r = new FileReader
+    r.onload = (e) ->
+      $.post '/upload_blockly',
+        content: e.target.result
+        name: 'New Block'
+        success: ->
+          location.reload()
+      $file[0].files.length = 0
+    r.readAsText @.files[0]
+$('#import-xml').on 'click', ->
+  $file.trigger 'click'
+
 blockItemTpt = Handlebars.compile $('#block-item-tpt').html()
 
 $.getJSON '/get_blockly_list', (data) ->

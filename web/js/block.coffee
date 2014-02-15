@@ -24,7 +24,12 @@ Flockly.getProfile (data, status, xhr) ->
 
 $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
-  Flockly.saveData getXML(), getName() or 'block.xml'
+  name = getName()
+  if name?
+    name = "#{name}.xml"
+  else
+    name = 'block.xml'
+  Flockly.saveData getXML(), name
 
 $('#import-xml').on 'click', (ev) ->
   ev.preventDefault()
