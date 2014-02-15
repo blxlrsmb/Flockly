@@ -13,7 +13,7 @@ def lists_create_empty(soup):
     return 'list()'
 
 def lists_create_with(soup):
-    num = int(soup.findChild('mutation')['count'])
+    num = int(soup.findChild('mutation')['items'])
     items = [valueToCode(soup, 'ADD' + str(x)) for x in xrange(num)]
     return '[' + ', '.join(items) + ']'
 
