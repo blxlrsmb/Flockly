@@ -1,11 +1,11 @@
 # Blockly Tools..
 blocklyTool = {}
 
-$.getJSON '/get_friends', (data) ->
-  blocklyTool.friends = []
-  data.forEach (user) ->
-    username = user['name'] + '/' + user['id']
-    blocklyTool.friends.push(username)
+#$.getJSON '/get_friends', (data) ->
+  #blocklyTool.friends = []
+  #data.forEach (user) ->
+    #username = user['name'] + '/' + user['id']
+    #blocklyTool.friends.push(username)
 
 blocklyTool.duplicateList = (arr) ->
   ret = []
