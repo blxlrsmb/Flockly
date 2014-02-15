@@ -10,6 +10,7 @@ import datetime
 import json
 import requests
 import bson
+import copy
 
 print "[SYSTEM] Initializing FBAPI"
 
@@ -22,6 +23,8 @@ class FBUser:
     def __init__(self, id, name):
         self.id = id
         self.name = id
+    def __init__(self):
+        pass
     def __str__(self):
         return self.name.encode('utf-8')
     def __unicode__(self):
@@ -37,6 +40,9 @@ class FBUser:
         self.has_birthday = user_complete.has_birthday
         self.birthday = user_complete.birthday
         return getattr(self, name)
+
+
+FBUsers = {}
 
 
 
@@ -99,6 +105,8 @@ def getAllStatus():
     return statuses
 
 def getUserinfo(uid):
+    if uid in FBUsers:
+        return copy.deepcopy(FBUsers[uid])
     graph = GraphAPI(access_token)
     user = graph.get('/' + uid)
     rt_user = FBUser()
@@ -120,15 +128,30 @@ def getUserinfo(uid):
         rt_user.birthday = None
     return rt_user
 
-def getFriends():
+def getMyFriends():
     graph = GraphAPI(access_token)
     friends = []
-    res = graph.get('/me/friends')
+    res = graph.get('/me/friends?fields=id,name,birthday,location,gender&access_token=%s&' % (access_token))
     while res['data']:
         for i in res['data']:
             fri = FBUser()
             fri.id = i['id']
             fri.name = i['name']
+            if 'location' in i and 'name' in i['location']:
+                fri.city = i['location']['name']
+            else:
+                fri.city = ""
+            if 'gender' in i:
+                fri.sex = i['gender']
+            else:
+                fri.sex = ""
+            if 'birthday' in i:
+                fri.birthday = parser.parse(i['birthday'])
+                fri.has_birthday = True
+            else:
+                fri.has_birthday = False
+                fri.birthday = None
+            FBUsers[fri.id] = copy.deepcopy(fri)
             friends.append(fri)
         if 'paging' in res and 'next' in res['paging']:
             res = json.loads(requests.get(res['paging']['next']).text)
