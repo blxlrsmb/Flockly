@@ -100,7 +100,7 @@ def reset_block():
             i.timesexecuted = 0
             i.lastexecution = 0
             i.save()
-        return ''
+        return 'ok'
     except:
         return Response('', status=404)
 
@@ -109,7 +109,7 @@ def reset_block():
 def delete_blockly():
     try:
         flockly.blockly.Blockly.objects(id=request.form['id'], userid=session['uid']).delete()
-        return ''
+        return 'ok'
     except:
         return Response('', status=404)
 
