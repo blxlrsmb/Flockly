@@ -49,6 +49,7 @@ def upload_blockly():
 @app.route('/logout')
 def logout():
     del session['uid']
+    return redirect('/')
 
 
 
