@@ -35,3 +35,12 @@ def fb_statusInfo(soup):
 
 def fb_myself(soup):
     return 'myself()'
+
+def fb_user(soup):
+    name = findName(soup, 'friend').text
+    return '"{0}"'.format(name)
+
+def fb_getStatusOf(soup):
+    user = valueToCode(soup, 'USER')
+    user = 'FBUser({0})'.format(user)
+    return 'getStatusOf({0})'.format(user)

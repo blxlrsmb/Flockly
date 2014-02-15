@@ -63,50 +63,13 @@ html
         block[type="logic_operation"]
         block[type="logic_negate"]
         block[type="logic_boolean"]
-        block[type="logic_null"]
-        block[type="logic_ternary"]
       category[name="Math"]
         block[type="math_number"]
         block[type="math_arithmetic"]
         block[type="math_single"]
-        block[type="math_trig"]
-        block[type="math_constant"]
-        block[type="math_number_property"]
-        block[type="math_change"]
-          value[name="DELTA"]
-            block[type="math_number"]
-              field[name="NUM"]
-                | 1
-        block[type="math_round"]
-        block[type="math_on_list"]
-        block[type="math_modulo"]
-        block[type="math_constrain"]
-          value[name="LOW"]
-            block[type="math_number"]
-              field[name="NUM"]
-                | 1
-          value[name="HIGH"]
-            block[type="math_number"]
-              field[name="NUM"]
-                | 100
-        block[type="math_random_int"]
-          value[name="FROM"]
-            block[type="math_number"]
-              field[name="NUM"]
-                | 1
-          value[name="TO"]
-            block[type="math_number"]
-              field[name="NUM"]
-                | 100
-        block[type="math_random_float"]
       category[name="Lists"]
         block[type="lists_create_empty"]
         block[type="lists_create_with"]
-        block[type="lists_repeat"]
-          value[name="NUM"]
-            block[type="math_number"]
-              field[name="NUM"]
-                | 5
         block[type="lists_length"]
         block[type="lists_isEmpty"]
         block[type="lists_indexOf"]
@@ -120,19 +83,19 @@ html
         block type="time_lastTimeExecuted"
         block type="time_currentTime"
       category name="Text"
+        block type="text_print"
         block type="text"
         block type="text_join"
-        block type="text_create_join_container"
-        block type="text_append"
+        /block type="text_append"
         block type="text_length"
-        block type="text_isEmpty"
-        block type="text_indexOf"
+        /block type="text_isEmpty"
+        /block type="text_indexOf"
+        block type="text_include"
         block type="text_charAt"
-        block type="text_getSubstring"
-        block type="text_changeCase"
-        block type="text_trim"
-        block type="text_print"
-        block type="text_prompt"
+        /block type="text_getSubstring"
+        /block type="text_changeCase"
+        /block type="text_trim"
+        /block type="text_prompt"
       category name="Facebook"
         block type="fb_getFriends"
         block type="fb_updateStatus"
@@ -151,7 +114,9 @@ html
     script src='js/foundation/foundation.min.js'
     script src='js/blockly/blockly_compressed.js'
     script src='js/blockly/blocks_compressed.js'
+    script src='js/blocklyTools.js'
     script src='js/blockly/blocks/facebook.js'
+    script src='js/blockly/blocks/extra.js'
     script src='js/blockly/blocks/datetime.js'
     script src='js/blockly/msg/js/en.js'
     script src='js/app.js'
