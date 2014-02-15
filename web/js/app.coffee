@@ -2,7 +2,15 @@
 
 exports = {}
 window.Flockly = exports
-host = 'http://203.91.121.47:8099'
+host = 'http://sg.fqj.me'
+
+exports.getQueryParams = ->
+  cs = location.search.substr(1)
+  return null unless cs?
+  _.chain(cs.split '&').map (param) ->
+    p = param.split '='
+    [p[0], decodeURIComponent(p[1])]
+  .object().value()
 
 exports.getProfile = (success, fail) ->
   $.ajax
@@ -29,15 +37,3 @@ exports.saveData = do ->
 ## Foundation
 
 $(document).foundation()
-
-## Main
-
-if Blockly?
-  Blockly.inject $('#blockly')[0],
-    path: 'js/blockly/'
-    toolbox: $('#toolbox')[0]
-
-$('#export-xml').on 'click', (ev) ->
-  ev.preventDefault()
-  xml = Blockly.Xml.domToText Blockly.Xml.workspaceToDom Blockly.mainWorkspace
-  exports.saveData xml, 'meow.xml'

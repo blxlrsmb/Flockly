@@ -13,7 +13,7 @@ html
     .row
       .small-10.columns
         ul.breadcrumbs
-          li.current: a href='/' Home
+          li.current: a href='/dashboard' Home
       .small-2.columns
         a#new-block.button.small href='#' New Block
 
@@ -30,12 +30,13 @@ html
           - 9.times do |i|
             li
               .callout.panel
-                a.block-name href='block.html' = "Meow#{i}"
+                a.block-name href='block?id=3' = "Meow#{i}"
                 .block-detail
                   span Last modified on
                   span.block-date Feb 15 2014 12:13
                 .block-tags
 
+    script src='js/lodash/lodash.min.js'
     script src='js/jquery/jquery.min.js'
     script src='js/modernizr/modernizr.js'
     script src='js/fastclick/fastclick.js'

@@ -4,7 +4,9 @@
   "private": "true",
   "dependencies": {
     "foundation": "zurb/bower-foundation",
-    "jquery": "~2.1.0"
+    "jquery": "~2.1.0",
+    "lodash": "~2.4.1",
+    "handlebars": "~1.3.0"
   },
   "exportsOverride": {
     "jquery": {
@@ -21,6 +23,12 @@
     },
     "fastclick": {
       "js": "lib/fastclick.js"
+    },
+    "lodash": {
+      "js": "dist/lodash.min.js"
+    },
+    "handlebars": {
+      "js": "handlebars.min.js"
     }
   }
 }

@@ -13,7 +13,7 @@ html
     .row
       .small-10.columns
         ul.breadcrumbs
-          li: a href='/' Home
+          li: a href='/dashboard' Home
           li.current: a href='#' Block
       .small-2.columns
         a.button.dropdown.small href='#' data-dropdown='drop-actions' Actions
@@ -144,6 +144,7 @@ html
         block type="fb_getStatusOf"
         block type="fb_user"
 
+    script src='js/lodash/lodash.min.js'
     script src='js/jquery/jquery.min.js'
     script src='js/modernizr/modernizr.js'
     script src='js/fastclick/fastclick.js'
@@ -154,3 +155,4 @@ html
     script src='js/blockly/blocks/datetime.js'
     script src='js/blockly/msg/js/en.js'
     script src='js/app.js'
+    script src='js/block.js'

@@ -36,12 +36,12 @@ module.exports = (grunt) ->
 
     slim:
       dev:
-        files: [
+        files: [ {
           expand: true
           src: ['*.slim', '!_*.slim']
           dest: 'build'
           ext: '.html'
-        ]
+        } ]
 
     watch:
       options:
