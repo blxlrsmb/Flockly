@@ -13,6 +13,7 @@ class Blockly(Document):
     lastexecution = IntField(default=0)
     timesexecuted = IntField(default=0)
     logs = ListField(default=[])
+    enabled = BooleanField(default=False)
 
 # vim: foldmethod=marker
 

@@ -72,9 +72,21 @@ def get_blockly():
                 'userid': a_blockly.userid,
                 'content': a_blockly.content,
                 'name': a_blockly.name,
-                'logs': a_blockly.logs
+                'logs': a_blockly.logs,
+                'enabled': a_blockly.enabled
                 }
     else:
+        return Response('', status=404)
+
+@app.route('/enable')
+@basefunc.auth_required
+def enable_block():
+    try:
+        for i in flockly.blockly.Blockly.objects(id=request.args.get('id', ''), userid=session['uid']):
+            i.enabled = bool(int(request.args.get('enabled', '0')))
+            i.save()
+        return ''
+    except:
         return Response('', status=404)
 
 @app.route('/delete_blockly', methods=["POST"])

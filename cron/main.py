@@ -17,7 +17,7 @@ PYTHON_CMD = "python2"
 
 while True:
     try:
-        for blo in Blockly.objects:
+        for blo in Blockly.objects(enabled=True):
             try:
                 lastexecution, timesexecuted = blo.lastexecution, blo.timesexecuted
                 if time.time() - lastexecution < MIN_GAP:
@@ -51,3 +51,5 @@ while True:
     except Exception as e:
         print >>sys.stderr, e
         print >>sys.stderr, traceback.format_exc()
+    finally:
+        time.sleep(1)
