@@ -36,7 +36,7 @@ while True:
                 os.system("printf \"[SYSTEM] Started \" >> /tmp/flockly.run.log")
                 os.system("date >> /tmp/flockly.run.log")
                 os.system("echo [SYSTEM] Running >> /tmp/flockly.run.log")
-                os.system(PYTHON_CMD + " -u ./flockly.py " + blo.userid + " " + str(blo.id)  + " 1>>/tmp/flockly.run.log 2>&1")
+                os.system("timeout -s KILL 30 " + PYTHON_CMD + " -u ./flockly.py " + blo.userid + " " + str(blo.id)  + " 1>>/tmp/flockly.run.log 2>&1")
                 os.system("printf \"[SYSTEM] End \" >> /tmp/flockly.run.log")
                 os.system("date >> /tmp/flockly.run.log")
                 os.unlink('./flockly.py')
