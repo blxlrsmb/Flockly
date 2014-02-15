@@ -28,7 +28,7 @@ while True:
                 f.write('from fbapi import *')
                 f.close()
                 os.system(GENERATOR_PATH + " >> /tmp/flockly.py")
-                os.system(PYTHON_CMD + " /tmp/flockly.py >/dev/null 2>/dev/null")
+                os.system(PYTHON_CMD + " /tmp/flockly.py " + blo.userid + " " + str(blo.id) + ">/dev/null 2>/dev/null")
                 blo.lastexecution = int(time.time())
                 blo.timesexecuted = blo.timesexecuted + 1
                 blo.save()
