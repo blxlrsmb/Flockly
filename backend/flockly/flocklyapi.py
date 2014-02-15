@@ -77,6 +77,16 @@ def get_blockly():
     else:
         return Response('', status=404)
 
+@app.route('/delete_blockly', methods=["DELETE"])
+@basefunc.auth_required
+def delete_blockly():
+    try:
+        flockly.blockly.Blockly.objects(id=request.form['id'], userid=session['uid']).delete()
+        return ''
+    except:
+        return Response('', status=404)
+
+
 
 @app.route('/get_profile')
 @basefunc.auth_required
