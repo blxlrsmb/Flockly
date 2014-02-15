@@ -47,7 +47,7 @@ def upload_blockly():
 
 
 
-@app.route('/get_blocklies_list')
+@app.route('/get_blockly_list')
 @basefunc.auth_required
 @basefunc.tojson
 def get_blockly_list():
@@ -61,7 +61,10 @@ def get_blockly_list():
 @basefunc.auth_required
 @basefunc.tojson
 def get_blockly():
-    a_blockly = list(flockly.blockly.Blockly.objects(id=request.args.get('id', ''), userid=session['uid']))
+    try:
+        a_blockly = list(flockly.blockly.Blockly.objects(id=request.args.get('id', ''), userid=session['uid']))
+    except:
+        return Response('', status=404)
     if a_blockly:
         a_blockly = a_blockly[0]
         return {

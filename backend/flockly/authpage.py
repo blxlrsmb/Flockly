@@ -14,7 +14,7 @@ def auth():
         "publish_stream", "read_stream", "status_update", "user_friends",
         "friends_birthday", "friends_hometown", "friends_location",
         "user_birthday", "user_hometown", "user_location"
-        ])
+        ], display='')
     return redirect(auth_url)
 
 @app.route('/auth_redirect')
