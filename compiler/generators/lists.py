@@ -23,27 +23,33 @@ def lists_length(soup):
 def lists_isEmpty(soup):
     return lists_length(soup) + ' == 0'
 
-def lists_getIndex(soup):
+def lists_getIndex_new(soup):
+    print soup
+    mode = findName(soup, 'MODE').text
     at = soup.findChild('mutation')['at']
     list_str = valueToCode(soup, 'VALUE')
     if at == 'true':
         se = findName(soup, 'WHERE').text
-        index = valueToCode(soup, 'AT')
+        index = str(valueToCode(soup, 'AT'))
         if se == 'FROM_END':
             index = '(-' + index + ')'
         else:
             index = '(' + index + '- 1)'
-        return list_str + '[' + \
-                index + ']'  # start from 1
     else:
         se = findName(soup, 'WHERE').text
         if se == 'FIRST':
-            return list_str + '[0]'
+            index = '0'
         elif se == 'END':
-            return list_str + '[-1]'
-        elif se == 'RANDOM':
-            return 'random.choice(list_str)'
+            index = '-1'
         else:
             raise "Illegal Input!"
+
+    if mode == 'GET':
+        return list_str + '[' + \
+                index + ']'  # start from 1
+    elif mode == 'REMOVE':
+        return 'del ' + list_str + '[' + index + ']'
+    elif mode == 'GET_REMOVE':
+        return list_str + '.pop(' + index + ')'
 
 
