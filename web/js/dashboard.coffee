@@ -15,6 +15,9 @@ Flockly.getProfile (data, status, xhr) ->
   $('.profile-picture').css 'background-image', "url(#{data.picture.data.url})"
   $('.profile-name').text data.name
 
+$('#logout').on 'click', ->
+  window.location.href = '/logout'
+
 $('#search-input').on 'input', ->
   needle = new RegExp($(@).val(), 'i')
   $('#blocks ol').each (_, el) ->
