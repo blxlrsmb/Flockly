@@ -41,6 +41,7 @@ def upload_blockly():
 
     a_blockly['content'] = request.form['content']
     a_blockly['name'] = request.form['name']
+    a_blockly['lastmodified'] = int(time.time())
 
     a_blockly.save()
     return str(a_blockly.id)
@@ -73,7 +74,8 @@ def get_blockly():
                 'content': a_blockly.content,
                 'name': a_blockly.name,
                 'logs': a_blockly.logs,
-                'enabled': a_blockly.enabled
+                'enabled': a_blockly.enabled,
+                'lastmodified': a_blockly.lastmodified
                 }
     else:
         return Response('', status=404)
