@@ -49,3 +49,16 @@ blockItemTpt = Handlebars.compile $('#block-item-tpt').html()
 $.getJSON '/get_blockly_list', (data) ->
   data.forEach (item) ->
     $('#blocks').append $('<li/>').html blockItemTpt item
+
+
+$(document).on 'click', '.switch-on, .switch-off', ->
+  if $(@).hasClass 'switch-on'
+    enabled = 1
+    $(@).removeClass 'switch-on'
+    $(@).addClass 'switch-off'
+  else
+    enabled = 0
+    $(@).removeClass 'switch-off'
+    $(@).addClass 'switch-on'
+  $('input', @).prop 'checked', ! $('input', @).prop('checked')
+  $.get "/enable?id=#{$(@).parent().data('id')}&enabled=#{1-enabled}"
