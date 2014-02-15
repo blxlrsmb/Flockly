@@ -1,4 +1,4 @@
-from flask import session, Response, request
+from flask import session, Response, request, redirect
 from flockly import app, basefunc
 from facebook import GraphAPI
 import flockly.authpage
@@ -6,6 +6,7 @@ import flockly.blockly
 import requests
 import json
 import time
+import config
 
 
 @app.route('/get_friends')
@@ -113,6 +114,34 @@ def delete_blockly():
         return ''
     except:
         return Response('', status=404)
+
+
+@app.route('/share', methods=['POST'])
+@basefunc.auth_required
+def share_blockly():
+    try:
+        blo = flockly.blockly.Blockly.objects(id=request.form['id'], userid=session['uid'])[0]
+        new_link = config.SITE_URL + "/share_import/" + str(blo.id)
+        blo.public = True
+        blo.save()
+        return new_link
+    except:
+        return ''
+
+@app.route('/share_import/<id>')
+@basefunc.auth_required
+def share_import(id):
+    try:
+        blo = flockly.blockly.Blockly.objects(id=id, public=True)[0]
+        new_blo = flockly.blockly.Blockly()
+        new_blo.userid = session['uid']
+        new_blo.content = blo.content
+        new_blo.name = 'Imported Flockly: ' + blo.name
+        new_blo.lastmodified = blo.lastmodified
+        new_blo.save()
+        return redirect('/block?id=' + str(new_blo.id))
+    except:
+        return redirect('/')
 
 
 
