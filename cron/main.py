@@ -33,12 +33,16 @@ while True:
                 os.system(GENERATOR_PATH + " /tmp/flockly.xml >> ./flockly.py 2>>/tmp/flockly.run.log")
                 os.system("echo [SYSTEM] Generated code: >> /tmp/flockly.run.log")
                 os.system("cat ./flockly.py >> /tmp/flockly.run.log")
+                os.system("printf \"[SYSTEM] Started \" >> /tmp/flockly.run.log")
+                os.system("date >> /tmp/flockly.run.log")
                 os.system("echo [SYSTEM] Running >> /tmp/flockly.run.log")
+                os.system("printf \"[SYSTEM}] End \" >> /tmp/flockly.run.log")
+                os.system("date >> /tmp/flockly.run.log")
                 os.system(PYTHON_CMD + " -u ./flockly.py " + blo.userid + " " + str(blo.id)  + " 1>>/tmp/flockly.run.log 2>&1")
                 os.unlink('./flockly.py')
                 blo.lastexecution = int(time.time())
                 blo.timesexecuted = blo.timesexecuted + 1
-                blo.logs.append(open('/tmp/flockly.run.log', 'rb').read(1024))
+                blo.logs.append(open('/tmp/flockly.run.log', 'rb').read(102400))
                 if len(blo.logs) > 5:
                     blo.logs = blo.logs[-5:]
                 blo.save()
