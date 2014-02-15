@@ -18,6 +18,7 @@ $('#save-block').on 'click', (ev) ->
   uri = "#{uri}?id=#{id}" if id
   data =
     content: getXML()
+    name: $('#name-input').val()
   if id
     data.id = id
   $.post uri, data
