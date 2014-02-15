@@ -52,13 +52,13 @@ Blockly.Blocks['fb_userInfo'] = {
     init: function() {
         this.setColour(123);
         var dropdown = new Blockly.FieldDropdown([
-                ['The name of the user', 'NAME'],
-                ['The sex of the user', 'SEX'],
-                ['The age of the user', 'AGE'],
-                ['The id of the user', 'ID'],
-                ['The city of the user', 'CITY']]);
+                ['The name of the user', 'name'],
+                ['The sex of the user', 'sex'],
+                ['The age of the user', 'age'],
+                ['The id of the user', 'id'],
+                ['The city of the user', 'city']]);
 				this.appendValueInput('USER')
-						.appendField(dropdown, 'END');
+							.appendField(dropdown, 'FIELD');
         this.setOutput(true, 'TEXT');
         this.setInputsInline(true);
     }
