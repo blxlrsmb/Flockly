@@ -10,7 +10,8 @@ from generators import blockToCode, getUniqueVarName
 if hasattr(sys, 'setdefaultencoding'):
     sys.setdefaultencoding('UTF-8')
 
-findName = lambda soup, name: soup.findChild(attrs={'name': name})
+findName = lambda soup, name: soup.findChild(attrs={'name': name},
+                                             recursive=False)
 
 indentCode = lambda s: '\n'.join(
     ['  '+i for i in s.split('\n')])
