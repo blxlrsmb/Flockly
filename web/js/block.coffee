@@ -26,6 +26,10 @@ $('#export-xml').on 'click', (ev) ->
   ev.preventDefault()
   Flockly.saveData getXML(), getName() or 'block.xml'
 
+$('#import-xml').on 'click', (ev) ->
+  ev.preventDefault()
+  Flockly.saveData getXML(), getName() or 'block.xml'
+
 $('#save-block').on 'click', (ev) ->
   ev.preventDefault()
   uri = '/upload_blockly'
@@ -35,7 +39,8 @@ $('#save-block').on 'click', (ev) ->
     name: getName()
   if id?
     data.id = id
-  $.post uri, data, (id) ->
+  $.post uri, data, (id_) ->
+    id = id_
     history.replaceState null, null, "?id=#{id}"
 
 if id?
