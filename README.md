@@ -5,3 +5,8 @@ This is a project developed at Facebook Singapore Hackathon in Feb 2014.
 
 It's now deployed at nowhere.
 
+
+dependency:
+
+mongoengine
+requests-facebook
